@@ -8,11 +8,9 @@
 	color: #16465e;
 }
 .text-input{
-	color: #fff !important;
-}
-.text-input > .sas{
 	color: #16465e !important;
 }
+
 .item-button{
 	height: 35px !important;
 	font-size: 14px !important;

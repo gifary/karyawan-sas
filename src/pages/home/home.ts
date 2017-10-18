@@ -6,7 +6,8 @@ import { LocalStorageService } from 'angular-2-local-storage';
 
 @Component({
   selector: 'page-home',
-  templateUrl: 'home.html'
+  templateUrl: 'home.html',
+  styleUrls: ['assets/css/style-be.css']
 })
 export class HomePage {
   

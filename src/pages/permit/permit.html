@@ -9,10 +9,28 @@
 
 
 <ion-content padding>
-	<form>
-		<ion-item class="backgroud-sas-putih">
-	    	<ion-label floating color="sas">Date</ion-label>
-	    	<ion-input type="text" name="date" id="date" ngModel color="sas" (ngClick)="openCalendar()"></ion-input>
-	  	</ion-item>
-	</form>
+		<ion-grid>
+			<div class="backgroud-sas-putih">
+		  		<form #permitForm="ngForm" (ngSubmit)="storePermit(permitForm)">
+		  			<ion-row center>
+		  				<ion-col col-12>
+		  					<ion-item class="backgroud-sas-putih">
+						    	<ion-label floating color="sas">Jenis Izin</ion-label>
+						    	<ion-select [(ngModel)]="jenis_izin" name="jenis_izin" color="sas">
+									<ion-option value="2">NES</ion-option>
+									<ion-option value="3">Nintendo64</ion-option>
+								</ion-select>
+						  	</ion-item>
+			  				<ion-item class="backgroud-sas-putih">
+						    	<ion-label floating color="sas">DATE</ion-label>
+						    	<ion-input type="text" name="date" id="date" ngModel class="sas" color="sas" (click)="openCalendar()" [(ngModel)]='tgl_pilih' style="color:#000;"></ion-input>
+						  	</ion-item>
+			  			</ion-col>
+			  			<ion-col col-12 style="margin-top: 20px;padding-left:20px;">
+			  				<button type="submit" ion-button full class="backgroud-sas">SUBMIT</button>
+			  			</ion-col>
+			  		</ion-row>
+			  	</form>
+		  	</div>
+		</ion-grid>
 </ion-content>

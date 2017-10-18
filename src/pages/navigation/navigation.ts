@@ -15,7 +15,8 @@ import { PermitPage } from '../permit/permit';
  */
 
 @Component({
-  templateUrl: 'navigation.html'
+  templateUrl: 'navigation.html',
+  styleUrls: ['assets/css/style-be.css']
 })
 export class NavigationPage {
 
