@@ -8,8 +8,9 @@ This is application create using ionic 2 and angular 2. This application still d
 - Show detail employee and generate QrCode employee
 
 ### Comming Soon
+- Selfservice for permit and annual service
 - List Training Employee
 - List comming soon event
-- Notification for
+- Notification for request selfservice
 
 
