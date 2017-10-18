@@ -1,0 +1,44 @@
+<ion-header>
+  <ion-navbar  color="sas" hideBackButton>
+    <ion-title>
+      Login
+    </ion-title>
+  </ion-navbar>
+</ion-header>
+
+<ion-content padding class="backgroud-sas">
+  	<ion-grid>
+	  	<div class="backgroud-sas">
+	  		<form #signupForm="ngForm" (ngSubmit)="loginUser(signupForm)">
+	  			<ion-row center>
+	  				<ion-col col-12>
+		  				<div text-center>
+		  					<ion-img style="width: 250px; height: 100px; background: transparent !important;" src="assets/img/sas_white.png">
+							</ion-img>
+						</div>
+					</ion-col>
+		  		</ion-row>
+
+		  		<ion-row>
+		  			<ion-col col-12>
+		  				<ion-item class="backgroud-sas">
+					    	<ion-label floating color="putih">Email</ion-label>
+					    	<ion-input type="text" name="email" id="email" ngModel color="putih"></ion-input>
+					  	</ion-item>
+		  			</ion-col>
+		  		</ion-row>
+		  		<ion-row>
+		  			<ion-item class="backgroud-sas">
+		  				<ion-label floating color="putih">Password</ion-label>
+			    		<ion-input type="password" name="password" id="password" ngModel color="putih"></ion-input>
+			    	</ion-item>
+		  		</ion-row>
+		  		<ion-row>
+		  			<ion-col col-12 style="padding-left:20px; margin-top: 20px">
+		  				<button type="submit" ion-button full class="backgroud-sas-putih">Login</button>
+		  			</ion-col>
+		  		</ion-row>
+		  	</form>
+	  	</div>
+	</ion-grid>
+</ion-content>

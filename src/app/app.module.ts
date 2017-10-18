@@ -6,25 +6,53 @@ import { StatusBar } from '@ionic-native/status-bar';
 
 import { MyApp } from './app.component';
 import { HomePage } from '../pages/home/home';
+import { LoginPage } from '../pages/login/login';
+import { NavigationPage } from '../pages/navigation/navigation';
+import { AboutPage } from '../pages/about/about';
+import { LogoutPage } from '../pages/logout/logout';
+
+import { KaryawanProvider } from '../providers/karyawan/karyawan';
+import { HttpModule } from '@angular/http';
+import { LocalStorageModule } from 'angular-2-local-storage';
+import { RouterModule, Routes } from '@angular/router';
+import { routing } from './app.routing';
+import { NgxQRCodeModule } from 'ngx-qrcode2';
 
 @NgModule({
   declarations: [
     MyApp,
-    HomePage
+    NavigationPage,
+    HomePage,
+    LoginPage,
+    AboutPage,
+    LogoutPage
+
   ],
   imports: [
     BrowserModule,
-    IonicModule.forRoot(MyApp)
+    IonicModule.forRoot(MyApp),
+    HttpModule,
+    LocalStorageModule.withConfig({
+        prefix: 'karyawan-sas',
+        storageType: 'localStorage'
+    }),
+    routing,
+    NgxQRCodeModule
   ],
   bootstrap: [IonicApp],
   entryComponents: [
     MyApp,
-    HomePage
+    HomePage,
+    LoginPage,
+    NavigationPage,
+    AboutPage,
+    LogoutPage
   ],
   providers: [
     StatusBar,
     SplashScreen,
-    {provide: ErrorHandler, useClass: IonicErrorHandler}
+    {provide: ErrorHandler, useClass: IonicErrorHandler},
+    KaryawanProvider
   ]
 })
 export class AppModule {}

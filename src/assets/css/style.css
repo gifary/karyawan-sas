@@ -1,0 +1,31 @@
+.backgroud-sas{
+	color: #fff;
+	background-color: #16465e;
+}
+
+.backgroud-sas-putih{
+	background-color: #fff;
+	color: #16465e;
+}
+.text-input{
+	color: #fff !important;
+}
+.item-button{
+	height: 35px !important;
+	font-size: 14px !important;
+	font-weight: bold;
+}
+.toolbar-background {
+  background-color: #16465e !important;
+  color: #fff !important;
+}
+.toolbar-title-md{
+	color: #fff;
+}
+p{
+	color: #16465e;
+}
+.test-class > img {
+  width: 200px;
+  color: #16465e;
+}

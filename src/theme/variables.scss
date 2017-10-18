@@ -38,8 +38,24 @@ $colors: (
   secondary:  #32db64,
   danger:     #f53d3d,
   light:      #f4f4f4,
-  dark:       #222
+  dark:       #222,
+  sas:		#16465e,
+  putih: #fff
 );
+
+$text-input-highlight-color-valid:       #fff !default;
+
+/// @prop - Color of the input highlight when invalid
+$text-input-highlight-color-invalid:     #fff !default;
+
+/// @prop - Color of the input placeholder
+$text-input-placeholder-color:           #fff !default;
+$text-color: #fff;
+$text-input-ios-background-color: #fff;
+$text-input-ios-highlight-color-invalid: #fff;
+$text-input-ios-highlight-color-valid: #fff;
+$text-input-ios-input-clear-icon-color: #fff;
+$img-placeholder-background: #16465e;
 
 
 // App iOS Variables
