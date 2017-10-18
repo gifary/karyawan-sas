@@ -15,7 +15,7 @@ export class HomePage {
     email: string;
     p_karyawan_id: number;
     user_id: number;
-
+    qr_code: string;
     constructor(
       public navCtrl: NavController,
       public alertCtrl: AlertController,
@@ -27,5 +27,6 @@ export class HomePage {
       this.email = this.localStorageService.get("email_perusahaan")+'';
       this.p_karyawan_id = parseInt(this.localStorageService.get('p_karyawan_id')+'');
       this.user_id = parseInt(this.localStorageService.get('user_id')+'');
+      this.qr_code = this.nik+'-'+this.p_karyawan_id+'-'+this.user_id+'-'+this.nama;
     }
 }

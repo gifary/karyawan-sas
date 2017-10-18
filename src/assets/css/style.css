@@ -25,7 +25,13 @@
 p{
 	color: #16465e;
 }
+.sas{
+	color: #16465e;
+}
 .test-class > img {
-  width: 200px;
+  width: 300px;
   color: #16465e;
+}
+.font-18{
+	font-size: 18px;
 }

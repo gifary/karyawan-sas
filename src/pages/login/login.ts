@@ -56,7 +56,7 @@ export class LoginPage {
         if(resObject.code==400){
           this.showAlert(resObject.message);
         }else if(resObject.code==200){ //berhasil login
-          this.showAlert(resObject.message);
+          //this.showAlert(resObject.message);
           this.karyawan = resObject.data;
 	        this.localStorageService.set("p_karyawan_id",this.karyawan.p_karyawan_id);
           this.localStorageService.set("user_id",this.karyawan.user_id);

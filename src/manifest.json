@@ -1,6 +1,6 @@
 {
-  "name": "Ionic",
-  "short_name": "Ionic",
+  "name": "HRMS Karyawan",
+  "short_name": "HRMS",
   "start_url": "index.html",
   "display": "standalone",
   "icons": [{

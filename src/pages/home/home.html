@@ -11,22 +11,22 @@
   <ion-grid>
   	<ion-row>
   		<ion-col col-3>
-  			<p>Nama</p>
+  			<div class="font-18 sas" color="sas">Nama</div>
   		</ion-col>
   		<ion-col col-9>
-  			<p>{{nama}}</p>
+  			<div class="font-18 sas" color="sas">{{nama}}</div>
   		</ion-col>
   		<ion-col col-3>
-  			<p>NIK</p>
+  			<div class="font-18 sas" color="sas">NIK</div>
   		</ion-col>
   		<ion-col col-9>
-  			<p>{{nik}}</p>
+  			<div class="font-18 sas" color="sas">{{nik}}</div>
   		</ion-col>
   	</ion-row>
   	<ion-row>
   		<ion-col col-12>
   			<div text-center height="250">
-			    <ngx-qrcode [qrc-value]="nik" [qrc-errorCorrectionLevel]="L" qrc-class="test-class"></ngx-qrcode>
+			    <ngx-qrcode [qrc-value]="qr_code" [qrc-errorCorrectionLevel]="L" qrc-class="test-class"></ngx-qrcode>
 			</div>
   		</ion-col>
   	</ion-row>
