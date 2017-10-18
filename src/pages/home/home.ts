@@ -2,7 +2,6 @@ import { Component } from '@angular/core';
 import { NavController } from 'ionic-angular';
 import { AlertController } from 'ionic-angular';
 import { LocalStorageService } from 'angular-2-local-storage';
-import { Platform, MenuController, Nav } from 'ionic-angular';
 
 
 @Component({

@@ -14,7 +14,6 @@ import { LogoutPage } from '../pages/logout/logout';
 import { KaryawanProvider } from '../providers/karyawan/karyawan';
 import { HttpModule } from '@angular/http';
 import { LocalStorageModule } from 'angular-2-local-storage';
-import { RouterModule, Routes } from '@angular/router';
 import { routing } from './app.routing';
 import { NgxQRCodeModule } from 'ngx-qrcode2';
 

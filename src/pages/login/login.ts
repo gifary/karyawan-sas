@@ -6,13 +6,6 @@ import { Karyawan } from '../../models/Karyawan';
 import { Resobject } from '../../models/resobject';
 import { AlertController } from 'ionic-angular';
 import { LocalStorageService } from 'angular-2-local-storage';
-import {
-  CanActivate, Router,
-  ActivatedRouteSnapshot,
-  RouterStateSnapshot
-}                           from '@angular/router';
-
-import { HomePage } from '../home/home';
 import { NavigationPage } from '../navigation/navigation';
 /**
  * Generated class for the LoginPage page.
@@ -36,7 +29,6 @@ export class LoginPage {
       public karyawanProvider: KaryawanProvider, 
       public alertCtrl: AlertController,
       private localStorageService: LocalStorageService,
-      private router: Router,
       public platform: Platform,
       public toastCtrl: ToastController) {
 
