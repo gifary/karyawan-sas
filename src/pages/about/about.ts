@@ -12,6 +12,7 @@ import { IonicPage, NavController, NavParams } from 'ionic-angular';
 @Component({
   selector: 'page-about',
   templateUrl: 'about.html',
+  styleUrls: ['assets/css/style-be.css']
 })
 export class AboutPage {
 
