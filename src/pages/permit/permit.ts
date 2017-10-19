@@ -30,12 +30,13 @@ export class PermitPage  {
   resobject: Resobject;
   data: Observable<any>;
   list_izin: Array<{id: string, nama: string}>;
-
+  show_jam :boolean;
   constructor(public navCtrl: NavController, 
   	public navParams: NavParams,
   	public modalCtrl: ModalController,
     public karyawanProvider: KaryawanProvider ) {
     this.getLisIzin(0);
+    this.show_jam =false;
   }
 
   onChange($event) {
@@ -76,6 +77,20 @@ export class PermitPage  {
   storePermit(form: NgForm){
     if(isDevMode()){
         console.log(form.value);
+    }
+    return this.karyawanProvider.storePermit(form).subscribe(Resobject =>{
+      this.resobject = Resobject;
+      if(Resobject.code==400){
+
+      }
+    });
+  }
+
+  changeJenisizin(event){
+    if(event==5){
+      this.show_jam =true;
+    }else{
+      this.show_jam = false;
     }
   }
 

@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core';
 import { Http,Headers,RequestOptions,Response } from '@angular/http';
 import { Observable } from 'rxjs/Rx';
 import 'rxjs/add/operator/map';
-
+import { NgForm } from '@angular/forms';
 import { Resobject } from '../../models/resobject';
 import { ResArray } from '../../models/ResArray';
 import { config } from '../../config/config';
@@ -42,6 +42,18 @@ export class KaryawanProvider {
     return this.http.get(`${this.base_url}/jenis-permit/`+tipe,options)
       .map(this.extractData)
       .catch(this.handleErrorObservable); 
+  }
+
+  storePermit(form:NgForm): Observable<Resobject> {
+      // headers.append('Access-Control-Allow-Origin','*');
+      let headers = new Headers({'Content-Type': 'application/json'});  
+      headers.append('Authorization','Bearer '+this.api_key);
+      let options = new RequestOptions({headers: headers});
+      const body = form;
+
+      return this.http.post(`${this.base_url}/permit`,body,options)
+        .map(this.extractData)
+        .catch(this.handleErrorObservable); 
   }
 
   private extractData(res: Response) {
