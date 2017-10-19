@@ -42,26 +42,28 @@ $colors: (
   sas:		#16465e,
   putih: #fff
 );
+$text-color: #16465e;
 
-$text-input-highlight-color-valid:       #fff !default;
+$text-input-highlight-color-valid:       #16465e !default;
 
 /// @prop - Color of the input highlight when invalid
-$text-input-highlight-color-invalid:     #fff !default;
+$text-input-highlight-color-invalid:     #16465e !default;
 
 /// @prop - Color of the input placeholder
-$text-input-placeholder-color:           #fff !default;
-$text-color: #fff;
-$text-input-ios-background-color: #fff;
-$text-input-ios-highlight-color-invalid: #fff;
-$text-input-ios-highlight-color-valid: #fff;
-$text-input-ios-input-clear-icon-color: #fff;
+$text-input-placeholder-color:           #16465e !default;
+$text-color: #16465e;
+$text-input-ios-background-color: #16465e;
+$text-input-ios-highlight-color-invalid: #16465e;
+$text-input-ios-highlight-color-valid: #16465e;
+$text-input-ios-input-clear-icon-color: #16465e;
 $img-placeholder-background: #16465e;
 
 
 // App iOS Variables
 // --------------------------------------------------
 // iOS only Sass variables can go here
-
+$datetime-ios-placeholder-color: #16465e;
+$datetime-md-placeholder-color: #16465e;
 
 
 

@@ -1,0 +1,32 @@
+<ion-header color="sas">
+  <ion-navbar color="sas">
+    <button ion-button menuToggle>
+      <ion-icon name="menu"></ion-icon>
+    </button>
+    <ion-title>List Permit</ion-title>
+  </ion-navbar>
+</ion-header>
+
+
+<ion-content padding>
+	<ion-list>
+	    <button ion-item *ngFor="let permit of permits">
+	    	<ion-grid>
+	    		<ion-row>
+	    			<ion-col>
+	    				{{permit.jenis_izin}}
+	    			</ion-col>
+	    			<ion-col>
+	    				{{permit.tgl_pengajuan}}
+	    			</ion-col>
+	    			<ion-col>
+	    				{{permit.status}}
+	    			</ion-col>
+	    		</ion-row>
+	    	</ion-grid>
+	    </button>
+  	</ion-list>
+  	<ion-fab right bottom>
+	    <button ion-fab mini (click)="addPermit()"><ion-icon name="add"></ion-icon></button>
+	</ion-fab>
+</ion-content>

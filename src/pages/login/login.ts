@@ -18,7 +18,7 @@ import { NavigationPage } from '../navigation/navigation';
 @Component({
   selector: 'page-login',
   templateUrl: 'login.html',
-  styleUrls: ['assets/css/style.css']
+  styleUrls: ['assets/css/style-be.css']
 })
 export class LoginPage {
 

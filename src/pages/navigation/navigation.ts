@@ -6,7 +6,7 @@ import { MenuController, Nav } from 'ionic-angular';
 import { HomePage } from '../home/home';
 import { AboutPage } from '../about/about';
 import { LogoutPage } from '../logout/logout';
-import { PermitPage } from '../permit/permit';
+import { ListPermitPage } from '../list-permit/list-permit';
 /**
  * Generated class for the NavigationPage page.
  *
@@ -35,7 +35,7 @@ export class NavigationPage {
     // set our app's pages
     this.pages = [
       { title: 'Home', component: HomePage },
-      { title: 'Permit', component: PermitPage },
+      { title: 'Permit', component: ListPermitPage },
       { title: 'About', component: AboutPage },
       { title: 'Logout', component: LogoutPage },
     ];

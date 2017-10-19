@@ -36,3 +36,9 @@ p{
 .font-18{
 	font-size: 18px;
 }
+.picker-md .picker-opt{
+	color: #16465e !important;
+}
+.datetime-text{
+	color: #16465e !important;
+}

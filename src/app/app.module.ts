@@ -10,6 +10,7 @@ import { LoginPage } from '../pages/login/login';
 import { NavigationPage } from '../pages/navigation/navigation';
 import { AboutPage } from '../pages/about/about';
 import { LogoutPage } from '../pages/logout/logout';
+import { ListPermitPage } from '../pages/list-permit/list-permit';
 import { PermitPage } from '../pages/permit/permit';
 
 import { KaryawanProvider } from '../providers/karyawan/karyawan';
@@ -18,6 +19,7 @@ import { LocalStorageModule } from 'angular-2-local-storage';
 import { routing } from './app.routing';
 import { NgxQRCodeModule } from 'ngx-qrcode2';
 import { CalendarModule } from "ion2-calendar";
+import { Camera } from '@ionic-native/camera';
 
 @NgModule({
   declarations: [
@@ -27,6 +29,7 @@ import { CalendarModule } from "ion2-calendar";
     LoginPage,
     AboutPage,
     LogoutPage,
+    ListPermitPage,
     PermitPage
 
   ],
@@ -50,13 +53,15 @@ import { CalendarModule } from "ion2-calendar";
     NavigationPage,
     AboutPage,
     LogoutPage,
+    ListPermitPage,
     PermitPage
   ],
   providers: [
     StatusBar,
     SplashScreen,
     {provide: ErrorHandler, useClass: IonicErrorHandler},
-    KaryawanProvider
+    KaryawanProvider,
+    Camera
   ]
 })
 export class AppModule {}
