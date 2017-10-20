@@ -1,6 +1,9 @@
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
 import { PermitPage } from '../permit/permit';
+import { KaryawanProvider } from '../../providers/karyawan/karyawan';
+import { LocalStorageService } from 'angular-2-local-storage';
+
 /**
  * Generated class for the ListPermitPage page.
  *
@@ -16,8 +19,12 @@ import { PermitPage } from '../permit/permit';
 export class ListPermitPage {
 
   permits: Array<{jenis_izin: string, tgl_pengajuan: string, status: string}>;
+  data: Array<any>;
 
-  constructor(public navCtrl: NavController, public navParams: NavParams) {
+  constructor(public navCtrl: NavController, 
+    public navParams: NavParams,
+    public karyawanProvider: KaryawanProvider,
+    public localStorage:LocalStorageService) {
     
 
     this.permits = [];
@@ -32,10 +39,25 @@ export class ListPermitPage {
 
   ionViewDidLoad() {
     console.log('ionViewDidLoad ListPermitPage');
+    let p_karyawan_id = parseInt(this.localStorage.get("p_karyawan_id")+'');
+    this.getPermit(p_karyawan_id);
+    status="";
   }
 
   addPermit(){
   	this.navCtrl.push(PermitPage,{});
   }
 
+  private getPermit(p_karyawan_id:number){
+    this.data = [];
+    return this.karyawanProvider.listPermit(p_karyawan_id).subscribe(ResArray=>{
+      if(ResArray.code==200){
+        console.log(ResArray.data);
+        this.data = ResArray.data;
+      }else{
+        console.log("error")
+      }
+
+    });
+  }
 }

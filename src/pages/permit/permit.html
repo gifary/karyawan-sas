@@ -13,21 +13,21 @@
 		  				<ion-col col-12>
 		  					<ion-item class="backgroud-sas-putih">
 						    	<ion-label floating color="sas">Jenis Izin</ion-label>
-						    	<ion-select [(ngModel)]="jenis_izin" (ngModelChange)="changeJenisizin($event)" name="m_jenis_ijin_id" color="sas">
+						    	<ion-select [(ngModel)]="jenis_izin" (ngModelChange)="changeJenisizin($event)" name="m_jenis_ijin_id" color="sas" required>
 									<ion-option *ngFor="let izin of list_izin" [value]="izin.id">{{izin.nama}}</ion-option>
 								</ion-select>
 						  	</ion-item>
 			  				<ion-item class="backgroud-sas-putih">
 						    	<ion-label floating color="sas">Tanggal Izin</ion-label>
-						    	<ion-input type="text" name="tgl_awal" id="date" ngModel class="sas" color="sas" (click)="openCalendar()" [(ngModel)]='tgl_pilih' style="color:#000;"></ion-input>
+						    	<ion-input type="text" name="tgl_awal" id="date" ngModel class="sas" color="sas" (click)="openCalendar()" [(ngModel)]='tgl_awal' style="color:#000;" required></ion-input>
 						  	</ion-item>
 						  	<ion-item *ngIf="show_jam">
 								<ion-label floating color="sas">Start Time</ion-label>
-								<ion-datetime displayFormat="H:mm" pickerFormat="H mm" [(ngModel)]="jam_awal" name="jam_awal" color="sas"></ion-datetime>
+								<ion-datetime displayFormat="H:mm" pickerFormat="H mm" [(ngModel)]="jam_awal" name="jam_awal" color="sas" required></ion-datetime>
 							</ion-item>
 							<ion-item *ngIf="show_jam">
 								<ion-label floating color="sas">End Time</ion-label>
-								<ion-datetime displayFormat="H:mm" pickerFormat="H mm" [(ngModel)]="jam_akhir" name="jam_akhir" color="sas"></ion-datetime>
+								<ion-datetime displayFormat="H:mm" pickerFormat="H mm" [(ngModel)]="jam_akhir" name="jam_akhir" color="sas" required></ion-datetime>
 							</ion-item>
 							<ion-item>
 							    <ion-label floating color="sas">Keterangan</ion-label>
@@ -42,8 +42,23 @@
 						      <img [src]="cameraUrl" height="150px" *ngIf="cameraUrl">
 						    </ion-thumbnail>
 							<ion-input type="hidden" [(ngModel)]="cameraUrl" name="foto" hide ></ion-input>
+							<ion-input type="hidden" [(ngModel)]="p_karyawan_id" name="p_karyawan_id" hide ></ion-input>
 							<button type="button" ion-button (click)="openCamera()" full class="backgroud-sas">Open Camera</button>
 							<button type="button" ion-button (click)="selectFromGallery()" full class="backgroud-sas">Open Galery</button>
+			  			</ion-col>
+			  			<ion-col col-12>
+			  				<ion-item class="backgroud-sas-putih">
+						    	<ion-label floating color="sas">HOD</ion-label>
+						    	<ion-select [(ngModel)]="appr_1"  name="appr_1" color="sas" required>
+									<ion-option *ngFor="let karyawan of list_karyawan" [value]="karyawan.id">{{karyawan.nama}}</ion-option>
+								</ion-select>
+						  	</ion-item>
+						  	<ion-item class="backgroud-sas-putih">
+						    	<ion-label floating color="sas">HRD</ion-label>
+						    	<ion-select [(ngModel)]="appr_2"  name="appr_2" color="sas" required>
+									<ion-option *ngFor="let karyawan of list_karyawan" [value]="karyawan.id">{{karyawan.nama}}</ion-option>
+								</ion-select>
+						  	</ion-item>
 			  			</ion-col>
 			  			<ion-col col-12 style="margin-top: 20px;padding-left:20px;">
 			  				<button type="submit" ion-button full class="backgroud-sas">SUBMIT</button>

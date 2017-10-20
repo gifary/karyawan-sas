@@ -2,11 +2,11 @@ import { Component } from '@angular/core';
 import { NavController, Platform, ToastController} from 'ionic-angular';
 import { NgForm } from '@angular/forms';
 import { KaryawanProvider } from '../../providers/karyawan/karyawan';
-import { Karyawan } from '../../models/Karyawan';
 import { Resobject } from '../../models/resobject';
 import { AlertController } from 'ionic-angular';
 import { LocalStorageService } from 'angular-2-local-storage';
 import { NavigationPage } from '../navigation/navigation';
+
 /**
  * Generated class for the LoginPage page.
  *
@@ -23,7 +23,7 @@ import { NavigationPage } from '../navigation/navigation';
 export class LoginPage {
 
     resObject: Resobject;
-    karyawan: Karyawan;
+    data: any;
 
     constructor(
       public navCtrl: NavController,
@@ -52,18 +52,20 @@ export class LoginPage {
 
     loginUser(form: NgForm){
     	return this.karyawanProvider.login(form.value.email,form.value.password).subscribe(resObject => {
-  	    this.resObject = resObject;
-
         if(resObject.code==400){
           this.showAlert(resObject.message);
         }else if(resObject.code==200){ //berhasil login
           //this.showAlert(resObject.message);
-          this.karyawan = resObject.data;
-	        this.localStorageService.set("p_karyawan_id",this.karyawan.p_karyawan_id);
-          this.localStorageService.set("user_id",this.karyawan.user_id);
-          this.localStorageService.set("email_perusahaan",this.karyawan.email_perusahaan);
-          this.localStorageService.set("nik",this.karyawan.nik);
-          this.localStorageService.set("nama",this.karyawan.nama);
+          this.data = resObject.data;
+	        this.localStorageService.set("p_karyawan_id",this.data.karyawan.p_karyawan_id);
+          this.localStorageService.set("user_id",this.data.id);
+          this.localStorageService.set("email_perusahaan",this.data.karyawan.email_perusahaan);
+          this.localStorageService.set("nik",this.data.karyawan.nik);
+          this.localStorageService.set("nama",this.data.karyawan.nama);
+          this.localStorageService.set("m_lokasi_id",this.data.karyawan.karyawan_pekerjaan.m_lokasi_id);
+          this.localStorageService.set("m_departemen_id",this.data.karyawan.karyawan_pekerjaan.m_departemen_id);
+          this.localStorageService.set("m_jabatan_id",this.data.karyawan.karyawan_pekerjaan.m_jabatan_id);
+          
           this.navCtrl.push(NavigationPage,{});
         }
         

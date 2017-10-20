@@ -10,21 +10,34 @@
 
 <ion-content padding>
 	<ion-list>
-	    <button ion-item *ngFor="let permit of permits">
-	    	<ion-grid>
-	    		<ion-row>
-	    			<ion-col>
-	    				{{permit.jenis_izin}}
-	    			</ion-col>
-	    			<ion-col>
-	    				{{permit.tgl_pengajuan}}
-	    			</ion-col>
-	    			<ion-col>
-	    				{{permit.status}}
-	    			</ion-col>
-	    		</ion-row>
-	    	</ion-grid>
-	    </button>
+		<div *ngIf="data?.length>=1">
+		    <button ion-item *ngFor="let permit of data">
+		    	<ion-grid>
+		    		<ion-row>
+		    			<ion-col col-12>
+		    				<b>{{permit.jenis_ijin.nama}}</b>
+		    			</ion-col>
+		    			<ion-col col-12>
+		    				Tanggal Pengajuan <b>{{ permit.create_date | date:'yMMMd' }}</b>
+		    			</ion-col>
+		    			<ion-col col-12>
+		    				<div *ngIf="1 == permit.status_appr_2">
+							    <div style="color:green">Status Disetujui</div>
+							</div>
+		    				<div *ngIf="2 == permit.status_appr_2">
+							    <div style="color:red">Status Ditolak</div>
+							</div>
+							<div *ngIf="3 == permit.status_appr_2">
+							    <div>Status Proses</div>
+							</div>
+		    			</ion-col>
+		    		</ion-row>
+		    	</ion-grid>
+		    </button>
+		</div>
+		<div *ngIf="data?.length==0">
+			<h3 text-center>Data Not Found</h3>
+		</div>
   	</ion-list>
   	<ion-fab right bottom>
 	    <button ion-fab mini (click)="addPermit()"><ion-icon name="add"></ion-icon></button>
