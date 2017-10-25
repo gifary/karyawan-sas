@@ -7,7 +7,12 @@
   </ion-header>
 
   <ion-content class="backgroud-sas">
-    <ion-list class="backgroud-sas">
+    <div text-center class="hide-card" class="backgroud-sas" style="margin-top: 10px;">
+        <img src="{{url_foto}}" class="custom-avatar"/>
+          <h3 color="sas" style="color: #fff !important">{{nama}}</h3>
+        <hr>
+    </div>
+    <ion-list class="backgroud-sas" style="margin-right: 15px;">
       <button ion-item *ngFor="let p of pages" (click)="openPage(p)" color="sas">
         {{p.title}}
       </button>

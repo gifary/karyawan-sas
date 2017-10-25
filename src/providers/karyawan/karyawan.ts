@@ -39,7 +39,7 @@ export class KaryawanProvider {
      headers.append('Authorization','Bearer '+this.api_key);
     let options = new RequestOptions({headers: headers});
 
-    return this.http.get(`${this.base_url}/jenis-permit/`+tipe,options)
+    return this.http.get(`${this.base_url}/jenis-permit`,options)
       .map(this.extractData)
       .catch(this.handleErrorObservable); 
   }

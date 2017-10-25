@@ -65,6 +65,7 @@ export class LoginPage {
           this.localStorageService.set("m_lokasi_id",this.data.karyawan.karyawan_pekerjaan.m_lokasi_id);
           this.localStorageService.set("m_departemen_id",this.data.karyawan.karyawan_pekerjaan.m_departemen_id);
           this.localStorageService.set("m_jabatan_id",this.data.karyawan.karyawan_pekerjaan.m_jabatan_id);
+          this.localStorageService.set("foto",this.data.karyawan.recruitment.foto);
           
           this.navCtrl.push(NavigationPage,{});
         }

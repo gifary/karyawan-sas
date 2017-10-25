@@ -7,6 +7,8 @@ import { HomePage } from '../home/home';
 import { AboutPage } from '../about/about';
 import { LogoutPage } from '../logout/logout';
 import { ListPermitPage } from '../list-permit/list-permit';
+import { LocalStorageService } from 'angular-2-local-storage';
+import { config } from '../../config/config';
 /**
  * Generated class for the NavigationPage page.
  *
@@ -25,9 +27,12 @@ export class NavigationPage {
   // make HelloIonicPage the root (or first) page
   rootPage = HomePage;
   pages: Array<{title: string, component: any}>;
+  nama: string;
+  url_foto:string;
 
   constructor(
     public menu: MenuController,
+    private localStorageService: LocalStorageService
    
   ) {
     //this.initializeApp();
@@ -35,10 +40,17 @@ export class NavigationPage {
     // set our app's pages
     this.pages = [
       { title: 'Home', component: HomePage },
-      { title: 'Permit', component: ListPermitPage },
+      { title: 'Izin/Cuti', component: ListPermitPage },
       { title: 'About', component: AboutPage },
       { title: 'Logout', component: LogoutPage },
     ];
+    this.nama = this.localStorageService.get('nama')+'';
+    this.url_foto = config.path_file+this.localStorageService.get('foto')+'';
+  }
+
+  ionViewDidLoad() {
+    this.nama = this.localStorageService.get('nama')+'';
+    this.url_foto = config.path_file+this.localStorageService.get('foto')+'';
   }
 
   openPage(page) {
