@@ -3,10 +3,14 @@
     <button ion-button menuToggle>
       <ion-icon name="menu"></ion-icon>
     </button>
-    <ion-title>ABOUT</ion-title>
+    <ion-title>Join Chat</ion-title>
   </ion-navbar>
 </ion-header>
 
-<ion-content class="backgroud-sas">
-  <h1>ABOUT PAGE</h1>
+<ion-content padding>
+  <ion-item>
+    <ion-label stacked>Set Nickname</ion-label>
+    <ion-input type="text" [(ngModel)]="nickname" placeholder="Nickname"></ion-input>
+  </ion-item>
+  <button ion-button full (click)="joinChat()" [disabled]="nickname === ''">Join Chat as {{ nickname }}</button>
 </ion-content>

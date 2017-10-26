@@ -3,6 +3,7 @@ import { ErrorHandler, NgModule } from '@angular/core';
 import { IonicApp, IonicErrorHandler, IonicModule } from 'ionic-angular';
 import { SplashScreen } from '@ionic-native/splash-screen';
 import { StatusBar } from '@ionic-native/status-bar';
+import { SocketIoModule, SocketIoConfig } from 'ng-socket-io';
 
 import { MyApp } from './app.component';
 import { HomePage } from '../pages/home/home';
@@ -12,6 +13,7 @@ import { AboutPage } from '../pages/about/about';
 import { LogoutPage } from '../pages/logout/logout';
 import { ListPermitPage } from '../pages/list-permit/list-permit';
 import { PermitPage } from '../pages/permit/permit';
+import { ChatRoomPage } from '../pages/chat-room/chat-room';
 
 import { KaryawanProvider } from '../providers/karyawan/karyawan';
 import { HttpModule } from '@angular/http';
@@ -20,6 +22,7 @@ import { routing } from './app.routing';
 import { NgxQRCodeModule } from 'ngx-qrcode2';
 import { CalendarModule } from "ion2-calendar";
 import { Camera } from '@ionic-native/camera';
+const config: SocketIoConfig = { url: 'http://localhost:3001', options: {} };
 
 @NgModule({
   declarations: [
@@ -30,8 +33,8 @@ import { Camera } from '@ionic-native/camera';
     AboutPage,
     LogoutPage,
     ListPermitPage,
-    PermitPage
-
+    PermitPage,
+    ChatRoomPage
   ],
   imports: [
     BrowserModule,
@@ -43,7 +46,8 @@ import { Camera } from '@ionic-native/camera';
     }),
     routing,
     NgxQRCodeModule,
-    CalendarModule
+    CalendarModule,
+    SocketIoModule.forRoot(config)
   ],
   bootstrap: [IonicApp],
   entryComponents: [
@@ -54,7 +58,8 @@ import { Camera } from '@ionic-native/camera';
     AboutPage,
     LogoutPage,
     ListPermitPage,
-    PermitPage
+    PermitPage,
+    ChatRoomPage
   ],
   providers: [
     StatusBar,

@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
-
+import { Socket } from 'ng-socket-io';
+import { ChatRoomPage } from '../chat-room/chat-room';
 /**
  * Generated class for the AboutPage page.
  *
@@ -16,7 +17,14 @@ import { IonicPage, NavController, NavParams } from 'ionic-angular';
 })
 export class AboutPage {
 
-  constructor(public navCtrl: NavController, public navParams: NavParams) {
+  nickname = '';
+ 
+  constructor(public navCtrl: NavController, private socket: Socket) { }
+ 
+  joinChat() {
+    this.socket.connect();
+    this.socket.emit('set-nickname', this.nickname);
+    this.navCtrl.push(ChatRoomPage, { nickname: this.nickname });
   }
 
   ionViewDidLoad() {

@@ -9,6 +9,7 @@ import { LogoutPage } from '../logout/logout';
 import { ListPermitPage } from '../list-permit/list-permit';
 import { LocalStorageService } from 'angular-2-local-storage';
 import { config } from '../../config/config';
+import { ChatRoomPage } from '../chat-room/chat-room';
 /**
  * Generated class for the NavigationPage page.
  *
@@ -41,7 +42,7 @@ export class NavigationPage {
     this.pages = [
       { title: 'Home', component: HomePage },
       { title: 'Izin/Cuti', component: ListPermitPage },
-      { title: 'About', component: AboutPage },
+      { title: 'Chat Room', component: ChatRoomPage },
       { title: 'Logout', component: LogoutPage },
     ];
     this.nama = this.localStorageService.get('nama')+'';
