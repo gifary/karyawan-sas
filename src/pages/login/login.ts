@@ -66,6 +66,15 @@ export class LoginPage {
           this.localStorageService.set("m_departemen_id",this.data.karyawan.karyawan_pekerjaan.m_departemen_id);
           this.localStorageService.set("m_jabatan_id",this.data.karyawan.karyawan_pekerjaan.m_jabatan_id);
           this.localStorageService.set("foto",this.data.karyawan.recruitment.foto);
+          this.localStorageService.set("lokasi",this.data.karyawan.karyawan_pekerjaan.lokasi.nama);
+          this.localStorageService.set("departement",this.data.karyawan.karyawan_pekerjaan.departement.nama);
+          this.localStorageService.set("jabatan",this.data.karyawan.karyawan_pekerjaan.jabatan.nama);
+          if(this.data.karyawan.absen!=null){
+            this.localStorageService.set("no_absen",this.data.karyawan.absen.no_absen);
+          }else{
+            this.localStorageService.set("no_absen",0);
+          }
+          
           
           this.navCtrl.push(NavigationPage,{});
         }

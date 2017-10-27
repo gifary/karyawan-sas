@@ -18,27 +18,15 @@ import { LocalStorageService } from 'angular-2-local-storage';
 })
 export class ListPermitPage {
 
-  permits: Array<{jenis_izin: string, tgl_pengajuan: string, status: string}>;
   data: Array<any>;
 
   constructor(public navCtrl: NavController, 
     public navParams: NavParams,
     public karyawanProvider: KaryawanProvider,
     public localStorage:LocalStorageService) {
-    
-
-    this.permits = [];
-    for(let i = 1; i < 11; i++) {
-      this.permits.push({
-        jenis_izin: "ijin ke-"+i,
-        tgl_pengajuan: "Tgl Pengajuan Rabu, 12 Jan 2017"+i,
-        status: "Proses"
-      });
-    }
   }
 
   ionViewDidLoad() {
-    console.log('ionViewDidLoad ListPermitPage');
     let p_karyawan_id = parseInt(this.localStorage.get("p_karyawan_id")+'');
     this.getPermit(p_karyawan_id);
     status="";
