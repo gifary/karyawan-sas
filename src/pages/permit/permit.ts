@@ -52,11 +52,9 @@ export class PermitPage  {
   }
 
   onChange($event) {
-    console.log($event);
   }
 
   ionViewDidLoad() {
-    console.log('ionViewDidLoad PermitPage');
     this.tgl_awal="";
     this.show_jam =false;
     this.getLisIzin(0);

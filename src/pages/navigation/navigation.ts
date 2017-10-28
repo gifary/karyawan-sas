@@ -7,6 +7,9 @@ import { HomePage } from '../home/home';
 import { AboutPage } from '../about/about';
 import { LogoutPage } from '../logout/logout';
 import { ListPermitPage } from '../list-permit/list-permit';
+import { LocalStorageService } from 'angular-2-local-storage';
+import { config } from '../../config/config';
+import { ChatRoomPage } from '../chat-room/chat-room';
 /**
  * Generated class for the NavigationPage page.
  *
@@ -25,9 +28,12 @@ export class NavigationPage {
   // make HelloIonicPage the root (or first) page
   rootPage = HomePage;
   pages: Array<{title: string, component: any}>;
+  nama: string;
+  url_foto:string;
 
   constructor(
     public menu: MenuController,
+    private localStorageService: LocalStorageService
    
   ) {
     //this.initializeApp();
@@ -36,9 +42,20 @@ export class NavigationPage {
     this.pages = [
       { title: 'Home', component: HomePage },
       { title: 'Izin/Cuti', component: ListPermitPage },
+<<<<<<< HEAD
       { title: 'About', component: AboutPage },
+=======
+      { title: 'Chat Room', component: ChatRoomPage },
+>>>>>>> 3c65a0d64f8242b9823bc903dce6aaf04c55f119
       { title: 'Logout', component: LogoutPage },
     ];
+    this.nama = this.localStorageService.get('nama')+'';
+    this.url_foto = config.path_file+this.localStorageService.get('foto')+'';
+  }
+
+  ionViewDidLoad() {
+    this.nama = this.localStorageService.get('nama')+'';
+    this.url_foto = config.path_file+this.localStorageService.get('foto')+'';
   }
 
   openPage(page) {

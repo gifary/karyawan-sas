@@ -59,6 +59,12 @@
 									<ion-option *ngFor="let karyawan of list_karyawan" [value]="karyawan.id">{{karyawan.nama}}</ion-option>
 								</ion-select>
 						  	</ion-item>
+						  	<ion-item class="backgroud-sas-putih" *ngIf="show_jam">
+						    	<ion-label floating color="sas">Security</ion-label>
+						    	<ion-select [(ngModel)]="appr_3"  name="appr_3" color="sas" required>
+									<ion-option *ngFor="let karyawan of list_karyawan" [value]="karyawan.id">{{karyawan.nama}}</ion-option>
+								</ion-select>
+						  	</ion-item>
 			  			</ion-col>
 			  			<ion-col col-12 style="margin-top: 20px;padding-left:20px;">
 			  				<button type="submit" ion-button full class="backgroud-sas">SUBMIT</button>

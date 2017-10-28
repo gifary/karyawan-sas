@@ -38,3 +38,17 @@ p{
 .font-18{
 	font-size: 18px;
 }
+
+.hide-card {
+  -webkit-box-shadow: none!important;
+}
+
+.custom-avatar {
+  height: 30vw;
+  width: 30vw;
+  border: 1px solid #fff;
+  border-radius: 50%;
+  display: inline-block;
+  margin-left: auto;
+  margin-right: auto;
+}

@@ -10,19 +10,57 @@
 <ion-content class="backgroud-putih">
   <ion-grid>
   	<ion-row>
-  		<ion-col col-3>
+  		<ion-col col-4>
   			<div class="font-18 sas" color="sas">Nama</div>
   		</ion-col>
-  		<ion-col col-9>
+  		<ion-col col-8>
   			<div class="font-18 sas" color="sas">{{nama}}</div>
   		</ion-col>
-  		<ion-col col-3>
+  		<ion-col col-4>
   			<div class="font-18 sas" color="sas">NIK</div>
   		</ion-col>
-  		<ion-col col-9>
+  		<ion-col col-8>
   			<div class="font-18 sas" color="sas">{{nik}}</div>
   		</ion-col>
+      <ion-col col-4>
+        <div class="font-18 sas" color="sas">Lokasi</div>
+      </ion-col>
+      <ion-col col-8>
+        <div class="font-18 sas" color="sas">{{lokasi}}</div>
+      </ion-col>
+      <ion-col col-4>
+        <div class="font-18 sas" color="sas">Departemen</div>
+      </ion-col>
+      <ion-col col-8>
+        <div class="font-18 sas" color="sas">{{departement}}</div>
+      </ion-col>
+      <ion-col col-4>
+        <div class="font-18 sas" color="sas">Jabatan</div>
+      </ion-col>
+      <ion-col col-8>
+        <div class="font-18 sas" color="sas">{{jabatan}}</div>
+      </ion-col>
   	</ion-row>
+    <div *ngIf="absen?.length>=1">
+      <ion-row>
+        <ion-col col-12>
+          <div text-center>
+              <h1 color="sas">Last Absen</h1>
+              <div ion-item *ngFor="let list_absen of absen">
+                <ion-grid>
+                  <ion-col col-12>
+                    <div *ngIf="'OK'==list_absen.kategori; then ok else not_ok">
+                      
+                    </div>
+                    <ng-template #ok><div color="sas"><b>{{ list_absen.absen_masuk_ | date:'d MMM y-h:m:s' }}</b></div><div style="color:green">Status {{list_absen.kategori}}</div></ng-template> 
+                    <ng-template #not_ok><div color="sas"><b>{{ list_absen.absen_masuk_ | date:'d MMM y-h:m:s' }}</b></div><div style="color:red">Status {{list_absen.kategori}}</div></ng-template> 
+                  </ion-col>
+                </ion-grid>
+              </div>
+          </div>
+        </ion-col>
+      </ion-row>
+    </div>
   	<ion-row>
   		<ion-col col-12>
   			<div text-center height="250">

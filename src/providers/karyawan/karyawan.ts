@@ -39,7 +39,7 @@ export class KaryawanProvider {
      headers.append('Authorization','Bearer '+this.api_key);
     let options = new RequestOptions({headers: headers});
 
-    return this.http.get(`${this.base_url}/jenis-permit/`+tipe,options)
+    return this.http.get(`${this.base_url}/jenis-permit`,options)
       .map(this.extractData)
       .catch(this.handleErrorObservable); 
   }
@@ -77,6 +77,16 @@ export class KaryawanProvider {
       .catch(this.handleErrorObservable); 
   }
 
+  listAbsen(no_absen:number): Observable<ResArray>{
+    let headers = new Headers({'Content-Type': 'application/json'});  
+     headers.append('Authorization','Bearer '+this.api_key);
+    let options = new RequestOptions({headers: headers});
+
+    return this.http.get(`${this.base_url}/get-list-absen/`+no_absen,options)
+      .map(this.extractData)
+      .catch(this.handleErrorObservable); 
+  }
+
   private extractData(res: Response) {
 		let body = res.json();
         return body || {};
@@ -84,7 +94,6 @@ export class KaryawanProvider {
 
   private handleErrorObservable (error: Response | any) {
 		console.error(error.message || error);
-    console.log("masuk error");
 		return Observable.throw(error.message || error);
   }
 }
