@@ -3,7 +3,7 @@
     <button ion-button menuToggle>
       <ion-icon name="menu"></ion-icon>
     </button>
-    <ion-title>List Permit</ion-title>
+    <ion-title>List Izin/Cuti</ion-title>
   </ion-navbar>
 </ion-header>
 
@@ -18,17 +18,17 @@
 		    				<b>{{permit.jenis_ijin.nama}}</b>
 		    			</ion-col>
 		    			<ion-col col-12>
-		    				Tanggal Pengajuan <b>{{ permit.create_date | date:'yMMMd' }}</b>
+		    				<b>Tanggal Pengajuan</b> {{ permit.create_date | date:'yMMMd' }}
 		    			</ion-col>
 		    			<ion-col col-12>
 		    				<div *ngIf="1 == permit.status_appr_2">
-							    <div style="color:green">Status Disetujui</div>
+							    <div style="color:green"><b>Status</b> Disetujui</div>
 							</div>
 		    				<div *ngIf="2 == permit.status_appr_2">
-							    <div style="color:red">Status Ditolak</div>
+							    <div style="color:red"><b>Status</b> Ditolak</div>
 							</div>
 							<div *ngIf="3 == permit.status_appr_2">
-							    <div>Status Proses</div>
+							    <div><b>Status</b> Proses</div>
 							</div>
 		    			</ion-col>
 		    		</ion-row>

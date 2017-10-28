@@ -1,0 +1,42 @@
+{
+  "project_info": {
+    "project_number": "644603778054",
+    "firebase_url": "https://slick-50a2c.firebaseio.com",
+    "project_id": "slick-50a2c",
+    "storage_bucket": "slick-50a2c.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:644603778054:android:2e82ce6f27d552d8",
+        "android_client_info": {
+          "package_name": "id.dika.slick"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "644603778054-q6oo0b780eglke3qnelcshkicdtgt4md.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCo0Oy7XpNXBywy_UC74auNz6ay4v7jAGY"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 1,
+          "other_platform_oauth_client": []
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
