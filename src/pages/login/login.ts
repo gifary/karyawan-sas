@@ -6,6 +6,7 @@ import { Resobject } from '../../models/resobject';
 import { AlertController } from 'ionic-angular';
 import { LocalStorageService } from 'angular-2-local-storage';
 import { NavigationPage } from '../navigation/navigation';
+import { LoadingController } from 'ionic-angular';
 
 /**
  * Generated class for the LoginPage page.
@@ -24,14 +25,15 @@ export class LoginPage {
 
     resObject: Resobject;
     data: any;
-
+    loading;
     constructor(
       public navCtrl: NavController,
       public karyawanProvider: KaryawanProvider, 
       public alertCtrl: AlertController,
       private localStorageService: LocalStorageService,
       public platform: Platform,
-      public toastCtrl: ToastController) {
+      public toastCtrl: ToastController,
+      public loadingCtrl: LoadingController) {
 
   	  console.log("siap show login");
       let p_karyawan_id = this.localStorageService.get("p_karyawan_id");
@@ -50,8 +52,19 @@ export class LoginPage {
       });
     }
 
+    presentLoadingDefault() {
+      this.loading = this.loadingCtrl.create({
+        content: 'Please wait...'
+      });
+
+      this.loading.present();
+    }
+
     loginUser(form: NgForm){
+      this.presentLoadingDefault();
+
     	return this.karyawanProvider.login(form.value.email,form.value.password).subscribe(resObject => {
+        this.loading.dismiss();
         if(resObject.code==400){
           this.showAlert(resObject.message);
         }else if(resObject.code==200){ //berhasil login
