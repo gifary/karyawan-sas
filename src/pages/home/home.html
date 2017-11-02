@@ -52,8 +52,8 @@
                     <div *ngIf="'OK'==list_absen.kategori; then ok else not_ok">
                       
                     </div>
-                    <ng-template #ok><div color="sas"><b>{{ list_absen.absen_masuk_ | date:'d MMM y-h:m:s' }}</b></div><div style="color:green">Status {{list_absen.kategori}}</div></ng-template> 
-                    <ng-template #not_ok><div color="sas"><b>{{ list_absen.absen_masuk_ | date:'d MMM y-h:m:s' }}</b></div><div style="color:red">Status {{list_absen.kategori}}</div></ng-template> 
+                    <ng-template #ok><div color="sas"><b>{{ list_absen.absen_masuk_ | date:'d MMM y - h:m:s' }}</b></div><div style="color:green">Status {{list_absen.kategori}}</div></ng-template> 
+                    <ng-template #not_ok><div color="sas"><b>{{ list_absen.absen_masuk_ | date:'d MMM y - h:m:s' }}</b></div><div style="color:red">Status {{list_absen.kategori}}</div></ng-template> 
                   </ion-col>
                 </ion-grid>
               </div>
@@ -61,12 +61,5 @@
         </ion-col>
       </ion-row>
     </div>
-  	<ion-row>
-  		<ion-col col-12>
-  			<div text-center height="250">
-			    <ngx-qrcode [qrc-value]="qr_code" [qrc-errorCorrectionLevel]="L" qrc-class="test-class"></ngx-qrcode>
-			</div>
-  		</ion-col>
-  	</ion-row>
   </ion-grid>
 </ion-content>

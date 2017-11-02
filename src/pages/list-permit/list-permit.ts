@@ -28,8 +28,7 @@ export class ListPermitPage {
 
   ionViewDidLoad() {
     let p_karyawan_id = parseInt(this.localStorage.get("p_karyawan_id")+'');
-    this.getPermit(p_karyawan_id);
-    status="";
+    this.getPermit(42);
   }
 
   addPermit(){

@@ -65,6 +65,12 @@ $img-placeholder-background: #16465e;
 $datetime-ios-placeholder-color: #16465e;
 $datetime-md-placeholder-color: #16465e;
 
+$searchbar-ios-padding-vertical:        0 !default;
+
+/// @prop - Padding start/end of the searchbar
+$searchbar-ios-padding-horizontal:        0px !default;
+$searchbar-ios-background-color: white !default;
+$searchbar-ios-border-color: black !default;
 
 
 // App Material Design Variables

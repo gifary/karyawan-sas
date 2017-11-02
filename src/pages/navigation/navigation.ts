@@ -4,12 +4,13 @@ import { MenuController, Nav } from 'ionic-angular';
 
 // pages
 import { HomePage } from '../home/home';
-import { AboutPage } from '../about/about';
 import { LogoutPage } from '../logout/logout';
 import { ListPermitPage } from '../list-permit/list-permit';
 import { LocalStorageService } from 'angular-2-local-storage';
 import { config } from '../../config/config';
 import { ChatRoomPage } from '../chat-room/chat-room';
+import { QrcodePage } from '../qrcode/qrcode';
+import { ListPermitProsesPage } from '../list-permit-proses/list-permit-proses';
 /**
  * Generated class for the NavigationPage page.
  *
@@ -41,7 +42,9 @@ export class NavigationPage {
     // set our app's pages
     this.pages = [
       { title: 'Home', component: HomePage },
-      { title: 'Izin/Cuti', component: ListPermitPage },
+      { title: 'Permit/Leave', component: ListPermitPage },
+      { title: 'Need Approval', component: ListPermitProsesPage },
+      { title: 'Qr Code', component: QrcodePage },
       { title: 'Chat Room', component: ChatRoomPage },
       { title: 'Logout', component: LogoutPage },
     ];

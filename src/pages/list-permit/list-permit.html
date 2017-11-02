@@ -15,10 +15,14 @@
 		    	<ion-grid>
 		    		<ion-row>
 		    			<ion-col col-12>
-		    				<b>{{permit.jenis_ijin.nama}}</b>
+		    				<div text-wrap>
+		    					<b>{{permit.jenis_ijin.nama}}</b>
+		    				</div>
 		    			</ion-col>
 		    			<ion-col col-12>
-		    				Tanggal Pengajuan <b>{{ permit.create_date | date:'yMMMd' }}</b>
+		    				<div text-wrap>
+		    					Tanggal Pengajuan <b>{{ permit.create_date | date:'yMMMd' }}</b>
+		    				</div>
 		    			</ion-col>
 		    			<ion-col col-12>
 		    				<div *ngIf="1 == permit.status_appr_2">

@@ -1,0 +1,21 @@
+<ion-header color="sas">
+  <ion-navbar color="sas">
+    <button ion-button menuToggle>
+      <ion-icon name="menu"></ion-icon>
+    </button>
+    <ion-title>Qr Code</ion-title>
+  </ion-navbar>
+</ion-header>
+
+
+<ion-content padding class="background-putih">
+	<ion-grid>
+		<ion-row>
+	  		<ion-col col-12>
+	  			<div text-center>
+				    <ngx-qrcode [qrc-value]="qr_code" [qrc-errorCorrectionLevel]="L" qrc-class="test-class"></ngx-qrcode>
+				</div>
+	  		</ion-col>
+	  	</ion-row>
+	</ion-grid>
+</ion-content>

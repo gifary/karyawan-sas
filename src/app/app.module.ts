@@ -14,6 +14,8 @@ import { LogoutPage } from '../pages/logout/logout';
 import { ListPermitPage } from '../pages/list-permit/list-permit';
 import { PermitPage } from '../pages/permit/permit';
 import { ChatRoomPage } from '../pages/chat-room/chat-room';
+import { QrcodePage } from '../pages/qrcode/qrcode';
+import { ListPermitProsesPage } from '../pages/list-permit-proses/list-permit-proses';
 
 import { KaryawanProvider } from '../providers/karyawan/karyawan';
 import { HttpModule } from '@angular/http';
@@ -34,7 +36,9 @@ const config: SocketIoConfig = { url: 'http://localhost:3001', options: {} };
     LogoutPage,
     ListPermitPage,
     PermitPage,
-    ChatRoomPage
+    ChatRoomPage,
+    QrcodePage,
+    ListPermitProsesPage
   ],
   imports: [
     BrowserModule,
@@ -59,7 +63,9 @@ const config: SocketIoConfig = { url: 'http://localhost:3001', options: {} };
     LogoutPage,
     ListPermitPage,
     PermitPage,
-    ChatRoomPage
+    ChatRoomPage,
+    QrcodePage,
+    ListPermitProsesPage
   ],
   providers: [
     StatusBar,
