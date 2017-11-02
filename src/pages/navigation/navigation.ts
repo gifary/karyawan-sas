@@ -42,18 +42,10 @@ export class NavigationPage {
     // set our app's pages
     this.pages = [
       { title: 'Home', component: HomePage },
-<<<<<<< HEAD
       { title: 'Permit/Leave', component: ListPermitPage },
       { title: 'Need Approval', component: ListPermitProsesPage },
       { title: 'Qr Code', component: QrcodePage },
-=======
       { title: 'Izin/Cuti', component: ListPermitPage },
-<<<<<<< HEAD
-      { title: 'About', component: AboutPage },
-=======
->>>>>>> 27804d61c464336c03c5263e7d18d90d48af1916
-      { title: 'Chat Room', component: ChatRoomPage },
->>>>>>> 3c65a0d64f8242b9823bc903dce6aaf04c55f119
       { title: 'Logout', component: LogoutPage },
     ];
     this.nama = this.localStorageService.get('nama')+'';
