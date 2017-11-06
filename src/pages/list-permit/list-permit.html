@@ -9,6 +9,15 @@
 
 
 <ion-content padding>
+	<ion-refresher (ionRefresh)="doRefresh($event);">
+		<ion-refresher-content
+		  pullingText="Pull to refresh"
+	      pullingIcon="arrow-dropdown"
+	      refreshingSpinner="circles"
+	      refreshingText="..refresh"
+		>
+		</ion-refresher-content>
+	</ion-refresher>
 	<ion-list>
 		<div *ngIf="data?.length>=1">
 		    <button ion-item *ngFor="let permit of data">
@@ -28,7 +37,7 @@
 		    				<div *ngIf="1 == permit.status_appr_2">
 							    <div style="color:green"><b>Status</b> Disetujui</div>
 							</div>
-		    				<div *ngIf="2 == permit.status_appr_2">
+		    				<div *ngIf="0 == permit.status_appr_2">
 							    <div style="color:red"><b>Status</b> Ditolak</div>
 							</div>
 							<div *ngIf="3 == permit.status_appr_2">

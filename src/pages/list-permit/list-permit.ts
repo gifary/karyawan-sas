@@ -28,7 +28,7 @@ export class ListPermitPage {
 
   ionViewDidLoad() {
     let p_karyawan_id = parseInt(this.localStorage.get("p_karyawan_id")+'');
-    this.getPermit(42);
+    this.getPermit(p_karyawan_id);
   }
 
   addPermit(){
@@ -39,7 +39,6 @@ export class ListPermitPage {
     this.data = [];
     return this.karyawanProvider.listPermit(p_karyawan_id).subscribe(ResArray=>{
       if(ResArray.code==200){
-        console.log(ResArray.data);
         this.data = ResArray.data;
       }else{
         console.log("error")
@@ -47,4 +46,10 @@ export class ListPermitPage {
 
     });
   }
+
+  doRefresh(refresher){
+    let p_karyawan_id = parseInt(this.localStorage.get("p_karyawan_id")+'');
+    this.getPermit(p_karyawan_id);
+    if(refresher != 0) refresher.complete();
+  };
 }

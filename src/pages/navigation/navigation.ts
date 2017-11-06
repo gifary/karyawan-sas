@@ -1,6 +1,6 @@
-import { Component, ViewChild } from '@angular/core';
+import { Component, ViewChild,isDevMode } from '@angular/core';
 
-import { MenuController, Nav } from 'ionic-angular';
+import { MenuController, Nav, NavParams } from 'ionic-angular';
 
 // pages
 import { HomePage } from '../home/home';
@@ -24,7 +24,7 @@ import { ListPermitProsesPage } from '../list-permit-proses/list-permit-proses';
 })
 export class NavigationPage {
 
-  @ViewChild(Nav) nav: Nav;
+  @ViewChild("content") nav: Nav;
 
   // make HelloIonicPage the root (or first) page
   rootPage = HomePage;
@@ -34,8 +34,8 @@ export class NavigationPage {
 
   constructor(
     public menu: MenuController,
-    private localStorageService: LocalStorageService
-   
+    private localStorageService: LocalStorageService,
+    public navParams: NavParams
   ) {
     //this.initializeApp();
 
@@ -45,11 +45,17 @@ export class NavigationPage {
       { title: 'Permit/Leave', component: ListPermitPage },
       { title: 'Need Approval', component: ListPermitProsesPage },
       { title: 'Qr Code', component: QrcodePage },
-      { title: 'Izin/Cuti', component: ListPermitPage },
       { title: 'Logout', component: LogoutPage },
     ];
+    if(isDevMode()){
+       console.log("status notif"+this.navParams.get('status_notif'))
+    }
+    if(this.navParams.get('status_notif')==true||this.navParams.get('status_notif')=='true'){
+        this.nav.setRoot(ListPermitProsesPage);
+    }
     this.nama = this.localStorageService.get('nama')+'';
     this.url_foto = config.path_file+this.localStorageService.get('foto')+'';
+    
   }
 
   ionViewDidLoad() {

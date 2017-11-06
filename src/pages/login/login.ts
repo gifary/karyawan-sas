@@ -1,5 +1,5 @@
-import { Component } from '@angular/core';
-import { NavController, Platform, ToastController} from 'ionic-angular';
+import { Component, isDevMode } from '@angular/core';
+import { NavController,Platform,ToastController} from 'ionic-angular';
 import { NgForm } from '@angular/forms';
 import { KaryawanProvider } from '../../providers/karyawan/karyawan';
 import { Resobject } from '../../models/resobject';
@@ -7,6 +7,7 @@ import { AlertController } from 'ionic-angular';
 import { LocalStorageService } from 'angular-2-local-storage';
 import { NavigationPage } from '../navigation/navigation';
 import { LoadingController } from 'ionic-angular';
+import { FCM } from '@ionic-native/fcm';
 
 /**
  * Generated class for the LoginPage page.
@@ -27,18 +28,23 @@ export class LoginPage {
     data: any;
     loading;
     constructor(
+      public toastCtrl: ToastController,
+      public platform: Platform,
       public navCtrl: NavController,
       public karyawanProvider: KaryawanProvider, 
       public alertCtrl: AlertController,
       private localStorageService: LocalStorageService,
-      public platform: Platform,
-      public toastCtrl: ToastController,
-      public loadingCtrl: LoadingController) {
+      public loadingCtrl: LoadingController,
+      public fcm:FCM) {
 
-  	  console.log("siap show login");
       let p_karyawan_id = this.localStorageService.get("p_karyawan_id");
       if(p_karyawan_id){
-        this.navCtrl.push(NavigationPage,{});
+        if(this.localStorageService.get('status_notif')==true){
+          this.navCtrl.push(NavigationPage,{status_notif:true});
+        }else{
+          this.navCtrl.push(NavigationPage,{});
+        }
+        
       }
       platform.ready().then(() => {
           platform.registerBackButtonAction(()=>{
@@ -88,7 +94,8 @@ export class LoginPage {
             this.localStorageService.set("no_absen",0);
           }
           
-          
+          this.initFCM();
+
           this.navCtrl.push(NavigationPage,{});
         }
         
@@ -102,6 +109,29 @@ export class LoginPage {
         buttons: ['OK']
       });
       alert.present();
+    }
+
+    initFCM(){
+      this.fcm.subscribeToTopic('perijinan');
+
+      this.fcm.getToken().then(token=>{
+        if(isDevMode()){
+            console.log(token);
+            console.log(this.data.id);
+        }
+        this.localStorageService.set("token",token);
+        this.karyawanProvider.savetoken(this.data.id,token).subscribe(resobject=>{
+        });
+      })
+
+      this.fcm.onTokenRefresh().subscribe(token=>{
+        if(this.data.id!=null && this.data.id!=''){
+          let old_token = this.localStorageService.get('token').toString();
+          this.karyawanProvider.updatetoken(this.data.id,old_token,token);
+        }
+      })
+
+      this.fcm.unsubscribeFromTopic('perijinan');
     }
 
 }

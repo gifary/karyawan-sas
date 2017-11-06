@@ -19,7 +19,6 @@ export class KaryawanProvider {
 	api_key = config.api_key;
 
   constructor(public http: Http) {
-    	console.log('Hello KaryawanProvider Provider');
   }
 
   login(email: string, password: string): Observable<Resobject> {
@@ -33,6 +32,42 @@ export class KaryawanProvider {
 	    	.map(this.extractData)
 	    	.catch(this.handleErrorObservable); 
 	}
+
+  savetoken(user_id: number, token: string): Observable<Resobject> {
+      // headers.append('Access-Control-Allow-Origin','*');
+      let headers = new Headers({'Content-Type': 'application/json'});  
+       headers.append('Authorization','Bearer '+this.api_key);
+      let options = new RequestOptions({headers: headers});
+      const body = {user_id: user_id, token:token};
+
+      return this.http.post(`${this.base_url}/user/savetoken`,body,options)
+        .map(this.extractData)
+        .catch(this.handleErrorObservable); 
+  }
+
+  removeToken(user_id: number, token: string): Observable<Resobject> {
+      // headers.append('Access-Control-Allow-Origin','*');
+      let headers = new Headers({'Content-Type': 'application/json'});  
+      headers.append('Authorization','Bearer '+this.api_key);
+      let options = new RequestOptions({headers: headers});
+      const body = {user_id: user_id, token:token};
+
+      return this.http.post(`${this.base_url}/user/removetoken`,body,options)
+        .map(this.extractData)
+        .catch(this.handleErrorObservable); 
+  }
+
+  updatetoken(user_id: number, old_token: string,new_token: string): Observable<Resobject> {
+      // headers.append('Access-Control-Allow-Origin','*');
+      let headers = new Headers({'Content-Type': 'application/json'});  
+       headers.append('Authorization','Bearer '+this.api_key);
+      let options = new RequestOptions({headers: headers});
+      const body = {user_id: user_id, old_token:old_token,new_token: new_token};
+
+      return this.http.post(`${this.base_url}/user/updatetoken`,body,options)
+        .map(this.extractData)
+        .catch(this.handleErrorObservable); 
+  }
 
   jenisIzin(tipe:number): Observable<Resobject>{
     let headers = new Headers({'Content-Type': 'application/json'});  
@@ -79,10 +114,23 @@ export class KaryawanProvider {
 
   listProsesPermit(p_karyawan_id:number): Observable<ResArray>{
     let headers = new Headers({'Content-Type': 'application/json'});  
-     headers.append('Authorization','Bearer '+this.api_key);
+    headers.append('Authorization','Bearer '+this.api_key);
     let options = new RequestOptions({headers: headers});
 
     return this.http.get(`${this.base_url}/get-list-permit-proses/`+p_karyawan_id,options)
+      .map(this.extractData)
+      .catch(this.handleErrorObservable); 
+  }
+
+  updatePermit(status_persetujuan:number,t_permit_id:number){
+    let headers = new Headers({'Content-Type': 'application/json'});  
+    headers.append('Authorization','Bearer '+this.api_key);
+    headers.append("Access-Control-Allow-Methods", "GET, POST, OPTIONS, PUT, DELETE");
+    let options = new RequestOptions({headers: headers});
+    console.log(status_persetujuan);
+    const body = {status_persetujuan: status_persetujuan};
+
+    return this.http.put(`${this.base_url}/permit/`+t_permit_id,body,options)
       .map(this.extractData)
       .catch(this.handleErrorObservable); 
   }

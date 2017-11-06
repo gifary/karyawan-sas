@@ -8,10 +8,19 @@
 </ion-header>
 
 <ion-content padding>
-	<ion-searchbar (input)="search($event)" placeholder="Search by name"></ion-searchbar>
+	<ion-searchbar (input)="search($event)" (ionCancel)="onCancel($event)" placeholder="Search by name"></ion-searchbar>
+	<ion-refresher (ionRefresh)="doRefresh($event);">
+		<ion-refresher-content
+		  pullingText="Pull to refresh"
+	      pullingIcon="arrow-dropdown"
+	      refreshingSpinner="circles"
+	      refreshingText="..refresh"
+		>
+		</ion-refresher-content>
+	</ion-refresher>
 	<ion-list>
 		<div *ngIf="data?.length>=1">
-		    <button ion-item *ngFor="let permit of data" (click)="openMenu(permit.t_form_exit_id)">
+		    <button ion-item *ngFor="let permit of data" (click)="openMenu(permit)">
 		    	<ion-grid>
 		    		<ion-row>
 		    			<ion-col col-12>
