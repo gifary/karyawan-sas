@@ -36,6 +36,7 @@ export class PermitPage  {
   data: Observable<any>;
   list_izin: Array<{id: string, nama: string}>;
   list_karyawan: Array<{id: string, nama: string}>;
+  list_security: Array<{id: string, nama: string}>;
   show_jam :boolean;
   p_karyawan_id: number;
   loading;
@@ -59,6 +60,7 @@ export class PermitPage  {
     this.show_jam =false;
     this.getLisIzin(0);
     this.getListKaryawan();
+    this.getListSecurity();
     this.p_karyawan_id = parseInt(this.localStorageService.get('p_karyawan_id')+'');
   }
 
@@ -235,6 +237,26 @@ export class PermitPage  {
           let data = Resobject.data
           for(let key in data){
             this.list_karyawan.push({
+              id: key,
+              nama: data[key]
+            });
+          }
+        }
+        
+      })
+  }
+
+  private getListSecurity(){
+    let m_lokasi_id = parseInt(this.localStorageService.get('m_lokasi_id')+'');
+    return this.karyawanProvider.listSecurity(m_lokasi_id).subscribe(Resobject => {
+        this.resobject = Resobject;
+        this.list_security = [];
+        if(Resobject.code==400){
+          console.log(Resobject.message);
+        }else if(Resobject.code==200){ //berhasil login
+          let data = Resobject.data
+          for(let key in data){
+            this.list_security.push({
               id: key,
               nama: data[key]
             });

@@ -30,18 +30,18 @@
 		    			</ion-col>
 		    			<ion-col col-12>
 		    				<div text-wrap>
-		    					Tanggal Pengajuan <b>{{ permit.create_date | date:'yMMMd' }}</b>
+		    					<ion-icon name="calendar">&nbsp; {{ permit.create_date | date:'d MMM y' }}</ion-icon> 
 		    				</div>
 		    			</ion-col>
 		    			<ion-col col-12>
 		    				<div *ngIf="1 == permit.status_appr_2">
-							    <div style="color:green"><b>Status</b> Disetujui</div>
+							    <div style="color:green"><ion-icon name="pricetag">&nbsp; Disetujui</ion-icon></div>
 							</div>
 		    				<div *ngIf="0 == permit.status_appr_2">
-							    <div style="color:red"><b>Status</b> Ditolak</div>
+							    <div style="color:red"><ion-icon name="pricetag">&nbsp; Ditolak</ion-icon></div>
 							</div>
 							<div *ngIf="3 == permit.status_appr_2">
-							    <div><b>Status</b> Proses</div>
+							    <div><ion-icon name="pricetag">&nbsp; Proses</ion-icon></div>
 							</div>
 		    			</ion-col>
 		    		</ion-row>

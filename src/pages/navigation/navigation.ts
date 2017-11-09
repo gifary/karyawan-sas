@@ -11,6 +11,8 @@ import { config } from '../../config/config';
 import { ChatRoomPage } from '../chat-room/chat-room';
 import { QrcodePage } from '../qrcode/qrcode';
 import { ListPermitProsesPage } from '../list-permit-proses/list-permit-proses';
+import { ListSessionPage } from '../list-session/list-session';
+
 /**
  * Generated class for the NavigationPage page.
  *
@@ -44,6 +46,7 @@ export class NavigationPage {
       { title: 'Home', component: HomePage },
       { title: 'Permit/Leave', component: ListPermitPage },
       { title: 'Need Approval', component: ListPermitProsesPage },
+      { title: 'Training', component: ListSessionPage },
       { title: 'Qr Code', component: QrcodePage },
       { title: 'Logout', component: LogoutPage },
     ];

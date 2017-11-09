@@ -89,6 +89,16 @@ export class KaryawanProvider {
       .catch(this.handleErrorObservable); 
   }
 
+  listSecurity(m_lokasi_id:number): Observable<Resobject>{
+    let headers = new Headers({'Content-Type': 'application/json'});  
+     headers.append('Authorization','Bearer '+this.api_key);
+    let options = new RequestOptions({headers: headers});
+
+    return this.http.get(`${this.base_url}/karyawan/get-data-security-by-lokasi/`+m_lokasi_id,options)
+      .map(this.extractData)
+      .catch(this.handleErrorObservable); 
+  }
+
   storePermit(form:NgForm): Observable<Resobject> {
       // headers.append('Access-Control-Allow-Origin','*');
       let headers = new Headers({'Content-Type': 'application/json'});  
@@ -118,6 +128,16 @@ export class KaryawanProvider {
     let options = new RequestOptions({headers: headers});
 
     return this.http.get(`${this.base_url}/get-list-permit-proses/`+p_karyawan_id,options)
+      .map(this.extractData)
+      .catch(this.handleErrorObservable); 
+  }
+
+  listSession(p_karyawan_id:number): Observable<ResArray>{
+    let headers = new Headers({'Content-Type': 'application/json'});  
+    headers.append('Authorization','Bearer '+this.api_key);
+    let options = new RequestOptions({headers: headers});
+
+    return this.http.get(`${this.base_url}/session/getlist-by-karyawan/`+p_karyawan_id,options)
       .map(this.extractData)
       .catch(this.handleErrorObservable); 
   }

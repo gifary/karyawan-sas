@@ -17,6 +17,7 @@ import { ChatRoomPage } from '../pages/chat-room/chat-room';
 import { QrcodePage } from '../pages/qrcode/qrcode';
 import { ListPermitProsesPage } from '../pages/list-permit-proses/list-permit-proses';
 import { ListPermitNotifPage} from '../pages/list-permit-notif/list-permit-notif';
+import { ListSessionPage } from '../pages/list-session/list-session';
 
 import { KaryawanProvider } from '../providers/karyawan/karyawan';
 import { HttpModule } from '@angular/http';
@@ -43,7 +44,8 @@ const config: SocketIoConfig = { url: 'http://localhost:3001', options: {} };
     ChatRoomPage,
     QrcodePage,
     ListPermitProsesPage,
-    ListPermitNotifPage
+    ListPermitNotifPage,
+    ListSessionPage
   ],
   imports: [
     BrowserModule,
@@ -71,7 +73,8 @@ const config: SocketIoConfig = { url: 'http://localhost:3001', options: {} };
     ChatRoomPage,
     QrcodePage,
     ListPermitProsesPage,
-    ListPermitNotifPage
+    ListPermitNotifPage,
+    ListSessionPage
   ],
   providers: [
     StatusBar,

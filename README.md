@@ -12,5 +12,7 @@ This is application create using ionic and angular 4. This application still dev
 ### Comming Soon
 - List Training Employee
 - List comming soon event
+- Chat room employee and HRD.
+- Last sharing article
 
 
