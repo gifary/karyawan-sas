@@ -21,8 +21,7 @@ import { LoadingController } from 'ionic-angular';
 
 @Component({
   selector: 'page-permit',
-  templateUrl: './permit.html',
-  styleUrls: ['assets/css/style-be.css']
+  templateUrl: './permit.html'
 })
 export class PermitPage  {
   

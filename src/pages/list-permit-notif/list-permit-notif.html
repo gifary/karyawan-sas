@@ -4,15 +4,60 @@
   See http://ionicframework.com/docs/components/#navigation for more info on
   Ionic pages and navigation.
 -->
-<ion-header>
-
-  <ion-navbar>
-    <ion-title>list-permit-notif</ion-title>
+<ion-header color="sas">
+  <ion-navbar color="sas">
+    <ion-title>Need Approval</ion-title>
+    <ion-buttons left>
+      <button (click)="goBack()" style="background-color: transparent; color: white">
+        <ion-icon name="arrow-back"></ion-icon>
+      </button>
+    </ion-buttons>
   </ion-navbar>
-
 </ion-header>
 
 
 <ion-content padding>
-
+	<ion-searchbar (input)="search($event)" (ionCancel)="onCancel($event)" placeholder="Search by name"></ion-searchbar>
+	<ion-refresher (ionRefresh)="doRefresh($event);">
+		<ion-refresher-content
+		  pullingText="Pull to refresh"
+	      pullingIcon="arrow-dropdown"
+	      refreshingSpinner="circles"
+	      refreshingText="..refresh"
+		>
+		</ion-refresher-content>
+	</ion-refresher>
+	<ion-list>
+		<div *ngIf="data?.length>=1">
+		    <button ion-item *ngFor="let permit of data" (click)="openMenu(permit)">
+		    	<ion-grid>
+		    		<ion-row>
+		    			<ion-col col-12>
+		    				<div text-wrap>
+		    					<b>{{permit.karyawan.nama}}</b>
+		    				</div>
+		    			</ion-col>
+		    			<ion-col col-12>
+		    				<div text-wrap class="font-12">
+		    					{{permit.jenis_ijin.nama}}
+		    				</div>
+		    			</ion-col>
+		    			<ion-col col-12>
+		    				<div text-wrap class="font-12">
+		    					{{ permit.tgl_pilih }} ({{ permit.lama }} Hari)
+		    				</div>
+		    			</ion-col>
+		    			<ion-col col-12>
+		    				<div text-wrap class="font-12">
+		    					{{ permit.keterangan }}
+		    				</div>
+		    			</ion-col>
+		    		</ion-row>
+		    	</ion-grid>
+		    </button>
+		</div>
+  	</ion-list>
+  	<div *ngIf="data?.length==0">
+		<h3 text-center>Data Not Found</h3>
+	</div>
 </ion-content>

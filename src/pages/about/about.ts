@@ -9,11 +9,9 @@ import { ChatRoomPage } from '../chat-room/chat-room';
  * Ionic pages and navigation.
  */
 
-@IonicPage()
 @Component({
   selector: 'page-about',
-  templateUrl: 'about.html',
-  styleUrls: ['assets/css/style-be.css']
+  templateUrl: 'about.html'
 })
 export class AboutPage {
 

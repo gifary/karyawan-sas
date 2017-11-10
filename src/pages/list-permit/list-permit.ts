@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { IonicPage, NavController, NavParams } from 'ionic-angular';
+import { NavController, NavParams } from 'ionic-angular';
 import { PermitPage } from '../permit/permit';
 import { KaryawanProvider } from '../../providers/karyawan/karyawan';
 import { LocalStorageService } from 'angular-2-local-storage';
@@ -11,7 +11,6 @@ import { LocalStorageService } from 'angular-2-local-storage';
  * Ionic pages and navigation.
  */
 
-@IonicPage()
 @Component({
   selector: 'page-list-permit',
   templateUrl: 'list-permit.html',

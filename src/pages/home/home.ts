@@ -6,8 +6,7 @@ import { KaryawanProvider } from '../../providers/karyawan/karyawan';
 
 @Component({
   selector: 'page-home',
-  templateUrl: 'home.html',
-  styleUrls: ['assets/css/style-be.css']
+  templateUrl: 'home.html'
 })
 export class HomePage {
   

@@ -21,8 +21,7 @@ import { ListSessionPage } from '../list-session/list-session';
  */
 
 @Component({
-  templateUrl: 'navigation.html',
-  styleUrls: ['assets/css/style-be.css']
+  templateUrl: 'navigation.html'
 })
 export class NavigationPage {
 

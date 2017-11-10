@@ -29,17 +29,14 @@ export class MyApp {
       splashScreen.hide();
       this.pushsetup();
       this.initFCM();
-      // this.nav.push(ListPermitNotifPage,{});
     });
   }
 
   initFCM(){
     this.fcm.onNotification().subscribe(data=>{
       if(data.wasTapped){
-        // this.rootPage = ListPermitNotifPage;
-        console.log("Received in background");
+        this.rootPage = ListPermitNotifPage;
       } else {
-        console.log("Received in foreground");
         let youralert = this.alertCtrl.create({
           title: data.title,
           message: data.message

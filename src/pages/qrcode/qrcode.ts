@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { IonicPage, NavController } from 'ionic-angular';
+import { NavController } from 'ionic-angular';
 import { LocalStorageService } from 'angular-2-local-storage';
 /**
  * Generated class for the QrcodePage page.
@@ -8,7 +8,6 @@ import { LocalStorageService } from 'angular-2-local-storage';
  * Ionic pages and navigation.
  */
 
-@IonicPage()
 @Component({
   selector: 'page-qrcode',
   templateUrl: 'qrcode.html',

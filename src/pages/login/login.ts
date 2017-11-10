@@ -1,5 +1,5 @@
 import { Component, isDevMode } from '@angular/core';
-import { NavController,Platform,ToastController} from 'ionic-angular';
+import { IonicPage,NavController,Platform,ToastController} from 'ionic-angular';
 import { NgForm } from '@angular/forms';
 import { KaryawanProvider } from '../../providers/karyawan/karyawan';
 import { Resobject } from '../../models/resobject';
@@ -16,11 +16,10 @@ import { FCM } from '@ionic-native/fcm';
  * Ionic pages and navigation.
  */
 
-
+@IonicPage()
 @Component({
   selector: 'page-login',
-  templateUrl: 'login.html',
-  styleUrls: ['assets/css/style-be.css']
+  templateUrl: 'login.html'
 })
 export class LoginPage {
 

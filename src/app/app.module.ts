@@ -6,12 +6,12 @@ import { StatusBar } from '@ionic-native/status-bar';
 import { SocketIoModule, SocketIoConfig } from 'ng-socket-io';
 
 import { MyApp } from './app.component';
-import { LoginPage } from '../pages/login/login';
+import { LoginPageModule } from '../pages/login/login.module';
 import { NavigationPage } from '../pages/navigation/navigation';
 import { HomePage } from '../pages/home/home';
 import { AboutPage } from '../pages/about/about';
 import { LogoutPage } from '../pages/logout/logout';
-import { ListPermitPage } from '../pages/list-permit/list-permit';
+import { ListPermitPageModule } from '../pages/list-permit/list-permit.module';
 import { PermitPage } from '../pages/permit/permit';
 import { ChatRoomPage } from '../pages/chat-room/chat-room';
 import { QrcodePage } from '../pages/qrcode/qrcode';
@@ -35,11 +35,11 @@ const config: SocketIoConfig = { url: 'http://localhost:3001', options: {} };
   declarations: [
     MyApp,
     NavigationPage,
-    LoginPage,
+    // LoginPage,
     HomePage,
     AboutPage,
     LogoutPage,
-    ListPermitPage,
+    // ListPermitPage,
     PermitPage,
     ChatRoomPage,
     QrcodePage,
@@ -58,17 +58,19 @@ const config: SocketIoConfig = { url: 'http://localhost:3001', options: {} };
     routing,
     NgxQRCodeModule,
     CalendarModule,
-    SocketIoModule.forRoot(config)
+    SocketIoModule.forRoot(config),
+    ListPermitPageModule,
+    LoginPageModule
   ],
   bootstrap: [IonicApp],
   entryComponents: [
     MyApp,
-    LoginPage,
+    // LoginPage,
     NavigationPage,
     HomePage,
     AboutPage,
     LogoutPage,
-    ListPermitPage,
+    // ListPermitPage,
     PermitPage,
     ChatRoomPage,
     QrcodePage,

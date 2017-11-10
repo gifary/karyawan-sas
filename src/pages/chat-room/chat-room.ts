@@ -4,7 +4,6 @@ import { Socket } from 'ng-socket-io';
 import { Observable } from 'rxjs/Observable';
 import { LocalStorageService } from 'angular-2-local-storage';
  
-@IonicPage()
 @Component({
   selector: 'page-chat-room',
   templateUrl: 'chat-room.html',
