@@ -1,16 +1,20 @@
 import { Component } from '@angular/core';
 import { NavController } from 'ionic-angular';
-import { AlertController } from 'ionic-angular';
 import { LocalStorageService } from 'angular-2-local-storage';
-import { KaryawanProvider } from '../../providers/karyawan/karyawan';
+/**
+ * Generated class for the QrcodePage page.
+ *
+ * See https://ionicframework.com/docs/components/#navigation for more info on
+ * Ionic pages and navigation.
+ */
 
 @Component({
-  selector: 'page-home',
-  templateUrl: 'home.html'
+  selector: 'page-qrcode',
+  templateUrl: 'qrcode.html',
 })
-export class HomePage {
-  
-    nik: string;
+export class QrcodePage {
+
+  	nik: string;
     nama: string;
     email: string;
     p_karyawan_id: number;
@@ -21,9 +25,8 @@ export class HomePage {
 
     constructor(
       public navCtrl: NavController,
-      public alertCtrl: AlertController,
-      private localStorageService: LocalStorageService,
-      public karyawanProvider: KaryawanProvider) {
+      private localStorageService: LocalStorageService
+    ) {
 
       this.nik = this.localStorageService.get('nik')+'';
       this.nama = this.localStorageService.get('nama')+'';
@@ -36,20 +39,8 @@ export class HomePage {
       this.qr_code = this.nik+'-'+this.p_karyawan_id+'-'+this.user_id+'-'+this.nama;
     }
 
-    ionViewDidLoad() {
-      this.getAbsen();
-    }
+  ionViewDidLoad() {
+    console.log('ionViewDidLoad QrcodePage');
+  }
 
-    private getAbsen(){
-      this.absen = [];
-      let no_absen = parseInt(this.localStorageService.get("no_absen")+'');
-      return this.karyawanProvider.listAbsen(no_absen).subscribe(ResArray=>{
-        if(ResArray.code==200){
-          this.absen = ResArray.data;
-        }else{
-          console.log("error")
-        }
-
-      });
-    }
 }

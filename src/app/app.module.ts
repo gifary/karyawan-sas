@@ -6,14 +6,18 @@ import { StatusBar } from '@ionic-native/status-bar';
 import { SocketIoModule, SocketIoConfig } from 'ng-socket-io';
 
 import { MyApp } from './app.component';
-import { HomePage } from '../pages/home/home';
-import { LoginPage } from '../pages/login/login';
+import { LoginPageModule } from '../pages/login/login.module';
 import { NavigationPage } from '../pages/navigation/navigation';
+import { HomePage } from '../pages/home/home';
 import { AboutPage } from '../pages/about/about';
 import { LogoutPage } from '../pages/logout/logout';
-import { ListPermitPage } from '../pages/list-permit/list-permit';
+import { ListPermitPageModule } from '../pages/list-permit/list-permit.module';
 import { PermitPage } from '../pages/permit/permit';
 import { ChatRoomPage } from '../pages/chat-room/chat-room';
+import { QrcodePage } from '../pages/qrcode/qrcode';
+import { ListPermitProsesPage } from '../pages/list-permit-proses/list-permit-proses';
+import { ListPermitNotifPage} from '../pages/list-permit-notif/list-permit-notif';
+import { ListSessionPage } from '../pages/list-session/list-session';
 
 import { KaryawanProvider } from '../providers/karyawan/karyawan';
 import { HttpModule } from '@angular/http';
@@ -22,19 +26,26 @@ import { routing } from './app.routing';
 import { NgxQRCodeModule } from 'ngx-qrcode2';
 import { CalendarModule } from "ion2-calendar";
 import { Camera } from '@ionic-native/camera';
+import { Push} from '@ionic-native/push';
+import { FCM } from '@ionic-native/fcm';
+
 const config: SocketIoConfig = { url: 'http://localhost:3001', options: {} };
 
 @NgModule({
   declarations: [
     MyApp,
     NavigationPage,
+    // LoginPage,
     HomePage,
-    LoginPage,
     AboutPage,
     LogoutPage,
-    ListPermitPage,
+    // ListPermitPage,
     PermitPage,
-    ChatRoomPage
+    ChatRoomPage,
+    QrcodePage,
+    ListPermitProsesPage,
+    ListPermitNotifPage,
+    ListSessionPage
   ],
   imports: [
     BrowserModule,
@@ -47,23 +58,31 @@ const config: SocketIoConfig = { url: 'http://localhost:3001', options: {} };
     routing,
     NgxQRCodeModule,
     CalendarModule,
-    SocketIoModule.forRoot(config)
+    SocketIoModule.forRoot(config),
+    ListPermitPageModule,
+    LoginPageModule
   ],
   bootstrap: [IonicApp],
   entryComponents: [
     MyApp,
-    HomePage,
-    LoginPage,
+    // LoginPage,
     NavigationPage,
+    HomePage,
     AboutPage,
     LogoutPage,
-    ListPermitPage,
+    // ListPermitPage,
     PermitPage,
-    ChatRoomPage
+    ChatRoomPage,
+    QrcodePage,
+    ListPermitProsesPage,
+    ListPermitNotifPage,
+    ListSessionPage
   ],
   providers: [
     StatusBar,
     SplashScreen,
+    Push,
+    FCM,
     {provide: ErrorHandler, useClass: IonicErrorHandler},
     KaryawanProvider,
     Camera

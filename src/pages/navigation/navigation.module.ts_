@@ -6,6 +6,7 @@ import { NavigationPage } from './navigation';
   declarations: [
     NavigationPage,
   ],
+ 
   imports: [
     IonicPageModule.forChild(NavigationPage),
   ],

@@ -1,10 +1,9 @@
 import { Component } from '@angular/core';
-import { NavController, IonicPage, NavParams, ToastController } from 'ionic-angular';
+import { IonicPage, NavParams, ToastController } from 'ionic-angular';
 import { Socket } from 'ng-socket-io';
 import { Observable } from 'rxjs/Observable';
 import { LocalStorageService } from 'angular-2-local-storage';
  
-@IonicPage()
 @Component({
   selector: 'page-chat-room',
   templateUrl: 'chat-room.html',
@@ -14,8 +13,7 @@ export class ChatRoomPage {
   nickname = '';
   message = '';
  
-  constructor(private navCtrl: NavController, 
-  	private navParams: NavParams, 
+  constructor(
   	private socket: Socket, 
   	private toastCtrl: ToastController,
   	private localStorage: LocalStorageService) {

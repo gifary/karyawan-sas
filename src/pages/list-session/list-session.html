@@ -1,0 +1,46 @@
+<ion-header color="sas">
+  <ion-navbar color="sas">
+    <button ion-button menuToggle>
+      <ion-icon name="menu"></ion-icon>
+    </button>
+    <ion-title>List Session Training</ion-title>
+  </ion-navbar>
+</ion-header>
+
+
+<ion-content padding>
+	<ion-list>
+		<div *ngIf="data?.length>=1">
+		    <button ion-item *ngFor="let ses of data">
+		    	<ion-grid>
+		    		<ion-row>
+		    			<ion-col col-12>
+		    				<div text-wrap>
+		    					<b>{{ses.session.nama}}</b>
+		    				</div>
+		    			</ion-col>
+		    			<ion-col col-12>
+		    				<div text-wrap>
+		    					<ion-icon name="locate">&nbsp; {{ses.session.lokasi}}</ion-icon> 
+		    				</div>
+		    			</ion-col>
+		    			<ion-col col-12>
+		    				<div text-wrap>
+		    					 <ion-icon name="pricetag">&nbsp; {{status[ses.session.status]}}</ion-icon>
+		    				</div>
+		    			</ion-col>
+		    			<ion-col col-12>
+		    				<div text-wrap>
+		    					<ion-icon name="calendar">&nbsp; {{ ses.session.start_date | date:'d MMM y hh:mm' }} - {{ ses.session.end_date | date:'d MMM y hh:mm' }}</ion-icon> 
+		    				</div>
+		    			</ion-col>
+		    			
+		    		</ion-row>
+		    	</ion-grid>
+		    </button>
+		</div>
+		<div *ngIf="data?.length==0">
+			<h3 text-center>Data Not Found</h3>
+		</div>
+  	</ion-list>
+</ion-content>

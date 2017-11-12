@@ -1,15 +1,18 @@
-import { Component, ViewChild } from '@angular/core';
+import { Component, ViewChild,isDevMode } from '@angular/core';
 
-import { MenuController, Nav } from 'ionic-angular';
+import { MenuController, Nav, NavParams } from 'ionic-angular';
 
 // pages
 import { HomePage } from '../home/home';
-import { AboutPage } from '../about/about';
 import { LogoutPage } from '../logout/logout';
 import { ListPermitPage } from '../list-permit/list-permit';
 import { LocalStorageService } from 'angular-2-local-storage';
 import { config } from '../../config/config';
 import { ChatRoomPage } from '../chat-room/chat-room';
+import { QrcodePage } from '../qrcode/qrcode';
+import { ListPermitProsesPage } from '../list-permit-proses/list-permit-proses';
+import { ListSessionPage } from '../list-session/list-session';
+
 /**
  * Generated class for the NavigationPage page.
  *
@@ -18,12 +21,11 @@ import { ChatRoomPage } from '../chat-room/chat-room';
  */
 
 @Component({
-  templateUrl: 'navigation.html',
-  styleUrls: ['assets/css/style-be.css']
+  templateUrl: 'navigation.html'
 })
 export class NavigationPage {
 
-  @ViewChild(Nav) nav: Nav;
+  @ViewChild("content") nav: Nav;
 
   // make HelloIonicPage the root (or first) page
   rootPage = HomePage;
@@ -33,20 +35,29 @@ export class NavigationPage {
 
   constructor(
     public menu: MenuController,
-    private localStorageService: LocalStorageService
-   
+    private localStorageService: LocalStorageService,
+    public navParams: NavParams
   ) {
     //this.initializeApp();
 
     // set our app's pages
     this.pages = [
       { title: 'Home', component: HomePage },
-      { title: 'Izin/Cuti', component: ListPermitPage },
-      { title: 'Chat Room', component: ChatRoomPage },
+      { title: 'Permit/Leave', component: ListPermitPage },
+      { title: 'Need Approval', component: ListPermitProsesPage },
+      { title: 'Training', component: ListSessionPage },
+      { title: 'Qr Code', component: QrcodePage },
       { title: 'Logout', component: LogoutPage },
     ];
+    if(isDevMode()){
+       console.log("status notif"+this.navParams.get('status_notif'))
+    }
+    if(this.navParams.get('status_notif')==true||this.navParams.get('status_notif')=='true'){
+        this.nav.setRoot(ListPermitProsesPage);
+    }
     this.nama = this.localStorageService.get('nama')+'';
     this.url_foto = config.path_file+this.localStorageService.get('foto')+'';
+    
   }
 
   ionViewDidLoad() {

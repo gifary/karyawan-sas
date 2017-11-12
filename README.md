@@ -1,16 +1,18 @@
 # This is a starter project for Employee at SAS Hospitality.
 
 ### Description
-This is application create using ionic 2 and angular 2. This application still development for using at SAS-Hospitality company.
+This is application create using ionic and angular 4. This application still development for using at SAS-Hospitality company.
 
 ### Features
 - Login employee
 - Show detail employee and generate QrCode employee
-
-### Comming Soon
 - Selfservice for permit and annual service
+- Approval Permit or annual
+- Integration notification with FCM
+### Comming Soon
 - List Training Employee
 - List comming soon event
-- Notification for request selfservice
+- Chat room employee and HRD.
+- Last sharing article
 
 

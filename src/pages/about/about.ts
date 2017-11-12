@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { IonicPage, NavController, NavParams } from 'ionic-angular';
+import { IonicPage, NavController } from 'ionic-angular';
 import { Socket } from 'ng-socket-io';
 import { ChatRoomPage } from '../chat-room/chat-room';
 /**
@@ -9,11 +9,9 @@ import { ChatRoomPage } from '../chat-room/chat-room';
  * Ionic pages and navigation.
  */
 
-@IonicPage()
 @Component({
   selector: 'page-about',
-  templateUrl: 'about.html',
-  styleUrls: ['assets/css/style-be.css']
+  templateUrl: 'about.html'
 })
 export class AboutPage {
 
