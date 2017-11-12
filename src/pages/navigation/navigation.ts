@@ -42,11 +42,7 @@ export class NavigationPage {
     this.pages = [
       { title: 'Home', component: HomePage },
       { title: 'Izin/Cuti', component: ListPermitPage },
-<<<<<<< HEAD
-      { title: 'About', component: AboutPage },
-=======
       { title: 'Chat Room', component: ChatRoomPage },
->>>>>>> 3c65a0d64f8242b9823bc903dce6aaf04c55f119
       { title: 'Logout', component: LogoutPage },
     ];
     this.nama = this.localStorageService.get('nama')+'';
