@@ -72,9 +72,12 @@ export class PermitPage  {
   }
 
   openCalendar() {
+    var d = new Date();
+    d.setDate(d.getDate() - 7);
     const options = {
       pickMode: 'multi',
-      title: 'Choose Date'
+      title: 'Choose Date',
+      from: d
     };
 
     let myCalendar =  this.modalCtrl.create(CalendarModal, {
@@ -211,7 +214,6 @@ export class PermitPage  {
         this.resobject = Resobject;
         this.list_izin = [];
         if(Resobject.code==400){
-          console.log(Resobject.message);
         }else if(Resobject.code==200){ //berhasil login
           let data = Resobject.data
           for(let key in data){
@@ -227,13 +229,23 @@ export class PermitPage  {
 
   private getListKaryawan(){
     let m_lokasi_id = parseInt(this.localStorageService.get('m_lokasi_id')+'');
-    return this.karyawanProvider.listKaryawan(m_lokasi_id).subscribe(Resobject => {
+    this.list_karyawan = [];
+    if(this.localStorageService.get('list_karyawan')!=null){
+      let data = JSON.parse(this.localStorageService.get('list_karyawan')+'');
+      for(let key in data){
+        this.list_karyawan.push({
+          id: key,
+          nama: data[key]
+        });
+      }
+    }else{
+      return this.karyawanProvider.listKaryawan(m_lokasi_id).subscribe(Resobject => {
         this.resobject = Resobject;
-        this.list_karyawan = [];
         if(Resobject.code==400){
           console.log(Resobject.message);
         }else if(Resobject.code==200){ //berhasil login
-          let data = Resobject.data
+          let data = Resobject.data;
+          this.localStorageService.set("list_karyawan",JSON.stringify(data));
           for(let key in data){
             this.list_karyawan.push({
               id: key,
@@ -241,28 +253,37 @@ export class PermitPage  {
             });
           }
         }
-        
       })
+    }
   }
 
   private getListSecurity(){
     let m_lokasi_id = parseInt(this.localStorageService.get('m_lokasi_id')+'');
-    return this.karyawanProvider.listSecurity(m_lokasi_id).subscribe(Resobject => {
-        this.resobject = Resobject;
-        this.list_security = [];
-        if(Resobject.code==400){
-          console.log(Resobject.message);
-        }else if(Resobject.code==200){ //berhasil login
-          let data = Resobject.data
-          for(let key in data){
-            this.list_security.push({
-              id: key,
-              nama: data[key]
-            });
+    this.list_security = [];
+    if(this.localStorageService.get('list_secruty')!=null){
+      let data = JSON.parse(this.localStorageService.get('list_secruty')+'');
+      for(let key in data){
+        this.list_security.push({
+          id: key,
+          nama: data[key]
+        });
+      }
+    }else{
+      return this.karyawanProvider.listSecurity(m_lokasi_id).subscribe(Resobject => {
+          this.resobject = Resobject;
+          if(Resobject.code==400){
+          }else if(Resobject.code==200){ //berhasil login
+            let data = Resobject.data;
+            this.localStorageService.set("list_secruty",JSON.stringify(data));
+            for(let key in data){
+              this.list_security.push({
+                id: key,
+                nama: data[key]
+              });
+            }
           }
-        }
-        
       })
+    }
   }
 
 }
