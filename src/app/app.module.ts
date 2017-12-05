@@ -18,6 +18,8 @@ import { QrcodePage } from '../pages/qrcode/qrcode';
 import { ListPermitProsesPage } from '../pages/list-permit-proses/list-permit-proses';
 import { ListPermitNotifPage} from '../pages/list-permit-notif/list-permit-notif';
 import { ListSessionPage } from '../pages/list-session/list-session';
+import { ListKaryawanModalPage } from '../pages/list-karyawan-modal/list-karyawan-modal';
+
 
 import { KaryawanProvider } from '../providers/karyawan/karyawan';
 import { HttpModule } from '@angular/http';
@@ -45,7 +47,8 @@ const config: SocketIoConfig = { url: 'http://localhost:3001', options: {} };
     QrcodePage,
     ListPermitProsesPage,
     ListPermitNotifPage,
-    ListSessionPage
+    ListSessionPage,
+    ListKaryawanModalPage
   ],
   imports: [
     BrowserModule,
@@ -76,7 +79,8 @@ const config: SocketIoConfig = { url: 'http://localhost:3001', options: {} };
     QrcodePage,
     ListPermitProsesPage,
     ListPermitNotifPage,
-    ListSessionPage
+    ListSessionPage,
+    ListKaryawanModalPage
   ],
   providers: [
     StatusBar,

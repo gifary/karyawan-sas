@@ -19,7 +19,7 @@
 						  	</ion-item>
 			  				<ion-item class="backgroud-sas-putih">
 						    	<ion-label floating color="sas">Tanggal Izin</ion-label>
-						    	<ion-input type="text" name="tgl_awal" id="date" ngModel class="sas" color="sas" (focus)="openCalendar()" [(ngModel)]='tgl_awal' style="color:#000;" required></ion-input>
+						    	<ion-input type="text" name="tgl_awal" id="date" class="sas" color="sas" (focus)="openCalendar()" readonly [(ngModel)]='tgl_awal' style="color:#000;" required></ion-input>
 						  	</ion-item>
 						  	<ion-item *ngIf="show_jam">
 								<ion-label floating color="sas">Start Time</ion-label>
@@ -43,28 +43,33 @@
 						    </ion-thumbnail>
 							<ion-input type="hidden" [(ngModel)]="cameraUrl" name="foto" hide ></ion-input>
 							<ion-input type="hidden" [(ngModel)]="p_karyawan_id" name="p_karyawan_id" hide ></ion-input>
-							<button type="button" ion-button (click)="openCamera()" full class="backgroud-sas">Open Camera</button>
-							<button type="button" ion-button (click)="selectFromGallery()" full class="backgroud-sas">Open Galery</button>
+							<ion-row>
+								<ion-col col-6>
+									<button type="button" ion-button (click)="openCamera()" full class="backgroud-sas">Open Camera</button>	
+								</ion-col>
+								<ion-col col-6>
+									<button type="button" ion-button (click)="selectFromGallery()" full class="backgroud-sas">Open Galery</button>
+								</ion-col>
+							</ion-row>
 			  			</ion-col>
 			  			<ion-col col-12>
-			  				<ion-item class="backgroud-sas-putih">
-						    	<ion-label floating color="sas">HOD</ion-label>
-						    	<ion-select [(ngModel)]="appr_1"  name="appr_1" color="sas" required>
-									<ion-option *ngFor="let karyawan of list_karyawan" [value]="karyawan.id">{{karyawan.nama}}</ion-option>
-								</ion-select>
+			  				<ion-item class="backgroud-sas-putih" >
+						    	<ion-label floating color="sas">PILIH HOD</ion-label>
+						    	<ion-input type="text" required [(ngModel)]="nama_hod" name="nama_hod" (focus)="openModal(1)"></ion-input>
 						  	</ion-item>
-						  	<ion-item class="backgroud-sas-putih">
-						    	<ion-label floating color="sas">HRD</ion-label>
-						    	<ion-select [(ngModel)]="appr_2"  name="appr_2" color="sas" required>
-									<ion-option *ngFor="let karyawan of list_karyawan" [value]="karyawan.id">{{karyawan.nama}}</ion-option>
-								</ion-select>
+						  	<ion-item class="backgroud-sas-putih" >
+						    	<ion-label floating color="sas">PILIH HRD</ion-label>
+						    	<ion-input type="text" required [(ngModel)]="nama_hrd" name="nama_hrd" (focus)="openModal(2)" ></ion-input>
 						  	</ion-item>
-						  	<ion-item class="backgroud-sas-putih" *ngIf="show_jam">
+						  	<ion-item class="backgroud-sas-putih" *ngIf="show_jam" >
 						    	<ion-label floating color="sas">Security</ion-label>
-						    	<ion-select [(ngModel)]="appr_3"  name="appr_3" color="sas" required>
-									<ion-option *ngFor="let karyawan of list_security" [value]="karyawan.id">{{karyawan.nama}}</ion-option>
-								</ion-select>
+						    	<ion-input type="text" required [(ngModel)]="nama_security" name="nama_security" (focus)="openModal(3)" ></ion-input>
 						  	</ion-item>
+			  			</ion-col>
+			  			<ion-col>
+			  				<ion-input type="hidden" [(ngModel)]="appr_1" name="appr_1" hide ></ion-input>
+			  				<ion-input type="hidden" [(ngModel)]="appr_2" name="appr_2" hide ></ion-input>
+						    <ion-input type="hidden" [(ngModel)]="appr_3" name="appr_3" hide ></ion-input>
 			  			</ion-col>
 			  			<ion-col col-12 style="margin-top: 20px;padding-left:20px;">
 			  				<button type="submit" ion-button full class="backgroud-sas">SUBMIT</button>
