@@ -1,0 +1,10 @@
+const listConfig = { 
+        debug: true,
+        base_url: "", //path for access API
+        path_file: "", //path for load image,doc,etc
+		api_key: '', //api key for credential API
+		url: 'http://localhost:3001', //api for chatting
+		options: {}
+};
+
+export const config = listConfig;
