@@ -1,7 +1,7 @@
-# This is a starter project for Employee at SAS Hospitality.
+# This is a starter project Human Resource Management System at SAS Hospitality.
 
 ### Description
-This is application create using ionic and angular 4. This application still development for using at SAS-Hospitality company.
+This is application create using ionic and angular 4. This application still development.
 
 ### Features
 - Login employee
@@ -9,8 +9,9 @@ This is application create using ionic and angular 4. This application still dev
 - Selfservice for permit and annual service
 - Approval Permit or annual
 - Integration notification with FCM
-### Comming Soon
 - List Training Employee
+### Comming Soon
+- Change Schedule Shift
 - List comming soon event
 - Chat room employee and HRD.
 - Last sharing article

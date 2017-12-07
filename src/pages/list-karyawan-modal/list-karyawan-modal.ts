@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { IonicPage, NavController, NavParams, ViewController } from 'ionic-angular';
+import { NavController, NavParams, ViewController, LoadingController } from 'ionic-angular';
 import { KaryawanProvider } from '../../providers/karyawan/karyawan';
 import { LocalStorageService } from 'angular-2-local-storage';
 import { Resobject } from '../../models/resobject';
@@ -11,7 +11,6 @@ import { Resobject } from '../../models/resobject';
  * Ionic pages and navigation.
  */
 
-@IonicPage()
 @Component({
 	selector: 'page-list-karyawan-modal',
 	templateUrl: 'list-karyawan-modal.html',
@@ -21,16 +20,27 @@ export class ListKaryawanModalPage {
 	resobject: Resobject;
 	list_karyawan_original: Array<{ id: string, nama: string }>;
 	list_karyawan: Array<{ id: string, nama: string }>;
+	loading;
 
 	constructor(
 		public navCtrl: NavController,
 		public navParams: NavParams,
 		public viewCtrl: ViewController,
 		private localStorageService: LocalStorageService,
+		public loadingCtrl: LoadingController,
 		public karyawanProvider: KaryawanProvider, ) {
 	}
 
+	presentLoadingDefault() {
+      this.loading = this.loadingCtrl.create({
+        content: 'Please wait...'
+      });
+
+      this.loading.present();
+    }
+
 	ionViewDidLoad() {
+		this.presentLoadingDefault();
 		if (this.id == 3) {
 			this.getListSecurity();
 		} else {
@@ -61,48 +71,84 @@ export class ListKaryawanModalPage {
 		let m_lokasi_id = parseInt(this.localStorageService.get('m_lokasi_id') + '');
 		this.list_karyawan = [];
 		this.list_karyawan_original = [];
-
-		return this.karyawanProvider.listKaryawan(m_lokasi_id).subscribe(Resobject => {
-			this.resobject = Resobject;
-			if (Resobject.code == 400) {
-				console.log(Resobject.message);
-			} else if (Resobject.code == 200) { //berhasil login
-				let data = Resobject.data;
-				for (let key in data) {
-					this.list_karyawan.push({
-						id: key,
-						nama: data[key]
-					});
-					this.list_karyawan_original.push({
-						id: key,
-						nama: data[key]
-					});
-				}
+		if(this.localStorageService.get("list_karyawan")!=null){
+			let data = JSON.parse(this.localStorageService.get("list_karyawan")+'');
+			for (let key in data) {
+				this.list_karyawan.push({
+					id: key,
+					nama: data[key]
+				});
+				this.list_karyawan_original.push({
+					id: key,
+					nama: data[key]
+				});
 			}
-		})
+			this.loading.dismiss();
+		}else{
+			this.karyawanProvider.listKaryawan(m_lokasi_id).subscribe(Resobject => {
+				this.resobject = Resobject;
+				if (Resobject.code == 400) {
+					this.loading.dismiss();
+					console.log(Resobject.message);
+				} else if (Resobject.code == 200) { //berhasil login
+					this.localStorageService.set("list_karyawan",JSON.stringify(Resobject.data));
+					let data = Resobject.data;
+					for (let key in data) {
+						this.list_karyawan.push({
+							id: key,
+							nama: data[key]
+						});
+						this.list_karyawan_original.push({
+							id: key,
+							nama: data[key]
+						});
+					}
+					this.loading.dismiss();
+				}
+			})
+		}
 	}
 
 	private getListSecurity() {
 		let m_lokasi_id = parseInt(this.localStorageService.get('m_lokasi_id') + '');
 		this.list_karyawan = [];
 		this.list_karyawan_original = [];
-		return this.karyawanProvider.listSecurity(m_lokasi_id).subscribe(Resobject => {
-			this.resobject = Resobject;
-			if (Resobject.code == 400) {
-			} else if (Resobject.code == 200) { //berhasil login
-				let data = Resobject.data;
-				for (let key in data) {
-					this.list_karyawan.push({
-						id: key,
-						nama: data[key]
-					});
-					this.list_karyawan_original.push({
-						id: key,
-						nama: data[key]
-					});
-				}
+		if(this.localStorageService.get("list_security")!=null){
+			let data = JSON.parse(this.localStorageService.get("list_security")+'');
+			for (let key in data) {
+				this.list_karyawan.push({
+					id: key,
+					nama: data[key]
+				});
+				this.list_karyawan_original.push({
+					id: key,
+					nama: data[key]
+				});
 			}
-		})
+			this.loading.dismiss();
+		}else{
+			this.karyawanProvider.listSecurity(m_lokasi_id).subscribe(Resobject => {
+				this.resobject = Resobject;
+				if (Resobject.code == 400) {
+					this.loading.dismiss();
+				} else if (Resobject.code == 200) { //berhasil login
+					this.localStorageService.set("list_security",JSON.stringify(Resobject.data));
+					let data = Resobject.data;
+					for (let key in data) {
+						this.list_karyawan.push({
+							id: key,
+							nama: data[key]
+						});
+						this.list_karyawan_original.push({
+							id: key,
+							nama: data[key]
+						});
+					}
+					this.loading.dismiss();
+				}
+			})
+		}
+		
 	}
 
 }

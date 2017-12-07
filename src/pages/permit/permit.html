@@ -19,7 +19,7 @@
 						  	</ion-item>
 			  				<ion-item class="backgroud-sas-putih">
 						    	<ion-label floating color="sas">Tanggal Izin</ion-label>
-						    	<ion-input type="text" name="tgl_awal" id="date" class="sas" color="sas" (focus)="openCalendar()" readonly [(ngModel)]='tgl_awal' style="color:#000;" required></ion-input>
+						    	<ion-input type="text" name="tgl_awal" id="date" class="sas" color="sas" (ionFocus)="openCalendar()" readonly [(ngModel)]='tgl_awal' style="color:#000;" required></ion-input>
 						  	</ion-item>
 						  	<ion-item *ngIf="show_jam">
 								<ion-label floating color="sas">Start Time</ion-label>
@@ -55,15 +55,15 @@
 			  			<ion-col col-12>
 			  				<ion-item class="backgroud-sas-putih" >
 						    	<ion-label floating color="sas">PILIH HOD</ion-label>
-						    	<ion-input type="text" required [(ngModel)]="nama_hod" name="nama_hod" (focus)="openModal(1)"></ion-input>
+						    	<ion-input type="text" required [(ngModel)]="nama_hod" name="nama_hod" (ionFocus)="openModal(1)"></ion-input>
 						  	</ion-item>
 						  	<ion-item class="backgroud-sas-putih" >
 						    	<ion-label floating color="sas">PILIH HRD</ion-label>
-						    	<ion-input type="text" required [(ngModel)]="nama_hrd" name="nama_hrd" (focus)="openModal(2)" ></ion-input>
+						    	<ion-input type="text" required [(ngModel)]="nama_hrd" name="nama_hrd" (ionFocus)="openModal(2)" ></ion-input>
 						  	</ion-item>
 						  	<ion-item class="backgroud-sas-putih" *ngIf="show_jam" >
 						    	<ion-label floating color="sas">Security</ion-label>
-						    	<ion-input type="text" required [(ngModel)]="nama_security" name="nama_security" (focus)="openModal(3)" ></ion-input>
+						    	<ion-input type="text" required [(ngModel)]="nama_security" name="nama_security" (ionFocus)="openModal(3)" ></ion-input>
 						  	</ion-item>
 			  			</ion-col>
 			  			<ion-col>

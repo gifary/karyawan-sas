@@ -165,6 +165,49 @@ export class KaryawanProvider {
       .catch(this.handleErrorObservable); 
   }
 
+  listReScheduleShift(p_karyawan_id:number): Observable<ResArray>{
+    let headers = new Headers({'Content-Type': 'application/json'});  
+    headers.append('Authorization','Bearer '+this.api_key);
+    let options = new RequestOptions({headers: headers});
+
+    return this.http.get(`${this.base_url}/get-list-reschedule/0/`+p_karyawan_id,options)
+      .map(this.extractData)
+      .catch(this.handleErrorObservable); 
+  }
+
+  listReScheduleMod(p_karyawan_id:number): Observable<ResArray>{
+    let headers = new Headers({'Content-Type': 'application/json'});  
+    headers.append('Authorization','Bearer '+this.api_key);
+    let options = new RequestOptions({headers: headers});
+
+    return this.http.get(`${this.base_url}/get-list-reschedule/1/`+p_karyawan_id,options)
+      .map(this.extractData)
+      .catch(this.handleErrorObservable); 
+  }
+
+  storeReschedule(form:NgForm): Observable<Resobject> {
+      // headers.append('Access-Control-Allow-Origin','*');
+      let headers = new Headers({'Content-Type': 'application/json'});  
+      headers.append('Authorization','Bearer '+this.api_key);
+      let options = new RequestOptions({headers: headers});
+
+      const body = JSON.stringify(form.value);
+      
+      return this.http.post(`${this.base_url}/reschedule`,body,options)
+        .map(this.extractData)
+        .catch(this.handleErrorObservable); 
+  }
+
+  listShift(): Observable<Resobject>{
+    let headers = new Headers({'Content-Type': 'application/json'});  
+    headers.append('Authorization','Bearer '+this.api_key);
+    let options = new RequestOptions({headers: headers});
+
+    return this.http.get(`${this.base_url}/shift`,options)
+      .map(this.extractData)
+      .catch(this.handleErrorObservable); 
+  }
+
   private extractData(res: Response) {
 		let body = res.json();
         return body || {};

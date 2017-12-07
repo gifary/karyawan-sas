@@ -12,7 +12,7 @@ import { ChatRoomPage } from '../chat-room/chat-room';
 import { QrcodePage } from '../qrcode/qrcode';
 import { ListPermitProsesPage } from '../list-permit-proses/list-permit-proses';
 import { ListSessionPage } from '../list-session/list-session';
-
+import { ListChangeSchedulePage } from '../list-change-schedule/list-change-schedule';
 /**
  * Generated class for the NavigationPage page.
  *
@@ -44,7 +44,8 @@ export class NavigationPage {
     this.pages = [
       { title: 'Home', component: HomePage },
       { title: 'Permit/Leave', component: ListPermitPage },
-      { title: 'Need Approval', component: ListPermitProsesPage },
+      { title: 'Reschedule', component: ListChangeSchedulePage },
+      { title: 'Approval', component: ListPermitProsesPage },
       { title: 'Training', component: ListSessionPage },
       { title: 'Qr Code', component: QrcodePage },
       { title: 'Logout', component: LogoutPage },

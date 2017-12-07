@@ -19,7 +19,9 @@ import { ListPermitProsesPage } from '../pages/list-permit-proses/list-permit-pr
 import { ListPermitNotifPage} from '../pages/list-permit-notif/list-permit-notif';
 import { ListSessionPage } from '../pages/list-session/list-session';
 import { ListKaryawanModalPage } from '../pages/list-karyawan-modal/list-karyawan-modal';
-
+import { ChangeSchedulePage } from '../pages/change-schedule/change-schedule';
+import { ListChangeSchedulePage } from '../pages/list-change-schedule/list-change-schedule';
+import { ShiftModalPage } from '../pages/shift-modal/shift-modal';
 
 import { KaryawanProvider } from '../providers/karyawan/karyawan';
 import { HttpModule } from '@angular/http';
@@ -48,7 +50,10 @@ const config: SocketIoConfig = { url: 'http://localhost:3001', options: {} };
     ListPermitProsesPage,
     ListPermitNotifPage,
     ListSessionPage,
-    ListKaryawanModalPage
+    ListKaryawanModalPage,
+    ChangeSchedulePage,
+    ListChangeSchedulePage,
+    ShiftModalPage
   ],
   imports: [
     BrowserModule,
@@ -80,7 +85,10 @@ const config: SocketIoConfig = { url: 'http://localhost:3001', options: {} };
     ListPermitProsesPage,
     ListPermitNotifPage,
     ListSessionPage,
-    ListKaryawanModalPage
+    ListKaryawanModalPage,
+    ShiftModalPage,
+    ChangeSchedulePage,
+    ListChangeSchedulePage
   ],
   providers: [
     StatusBar,

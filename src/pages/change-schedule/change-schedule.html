@@ -1,18 +1,66 @@
-<!--
-  Generated template for the ChangeSchedulePage page.
-
-  See http://ionicframework.com/docs/components/#navigation for more info on
-  Ionic pages and navigation.
--->
-<ion-header>
-
-  <ion-navbar>
-    <ion-title>ChangeSchedule</ion-title>
+<ion-header color="sas">
+  <ion-navbar color="sas">
+    <ion-title *ngIf="status_mod==1">Change MOD</ion-title>
+    <ion-title *ngIf="status_mod==0">Change Shift</ion-title>
   </ion-navbar>
-
 </ion-header>
 
 
 <ion-content padding>
-
+		<ion-grid>
+			<div class="backgroud-sas-putih">
+		  		<form #rescheduleForm="ngForm" (ngSubmit)="storeReschedule(rescheduleForm)">
+		  			<ion-row center>
+		  				<ion-col col-12>
+		  					<ion-item class="backgroud-sas-putih" *ngIf="status_mod==0">
+						    	<ion-label floating color="sas">Jenis Izin</ion-label>
+						    	<ion-select [(ngModel)]="jenis_izin" name="jenis_izin" color="sas" required>
+									<ion-option *ngFor="let izin of list_jenis_izin" [value]="izin.id">{{izin.nama}}</ion-option>
+								</ion-select>
+						  	</ion-item>
+						  	<ion-item class="backgroud-sas-putih" >
+						    	<ion-label floating color="sas">TUKAR DENGAN</ion-label>
+						    	<ion-input type="text" required [(ngModel)]="nama_tukeran" name="nama_tukeran" (ionFocus)="openModalKaryawan(1)"></ion-input>
+						  	</ion-item>
+						  	<ion-item class="backgroud-sas-putih" >
+						    	<ion-label floating color="sas">HOD/EAM</ion-label>
+						    	<ion-input type="text" required [(ngModel)]="nama_hod" name="nama_hod" (ionFocus)="openModalKaryawan(2)" ></ion-input>
+						  	</ion-item>
+						  	<ion-item class="backgroud-sas-putih" >
+						    	<ion-label floating color="sas">HRD</ion-label>
+						    	<ion-input type="text" required [(ngModel)]="nama_hrd" name="nama_hrd" (ionFocus)="openModalKaryawan(4)" ></ion-input>
+						  	</ion-item>
+						  	<ion-item class="backgroud-sas-putih">
+						    	<ion-label floating color="sas">Tanggal Awal</ion-label>
+						    	<ion-input type="text" name="tgl_awal" id="date" class="sas" color="sas" (ionFocus)="openCalendar(1)" readonly [(ngModel)]='tgl_awal' style="color:#000;" required></ion-input>
+						  	</ion-item>
+						  	<ion-item class="backgroud-sas-putih">
+						    	<ion-label floating color="sas">Tanggal Perubahan</ion-label>
+						    	<ion-input type="text" name="tgl_perubahan" id="date" class="sas" color="sas" (ionFocus)="openCalendar(2)" readonly [(ngModel)]='tgl_perubahan' style="color:#000;" required></ion-input>
+						  	</ion-item>
+						  	<ion-item class="backgroud-sas-putih" *ngIf="status_mod==0">
+						    	<ion-label floating color="sas">Shift Awal</ion-label>
+						    	<ion-input type="text" required [(ngModel)]="nama_shift_awal" name="nama_shift_awal" (ionFocus)="openModalShift(1)" ></ion-input>
+						  	</ion-item>
+						  	<ion-item class="backgroud-sas-putih" *ngIf="status_mod==0" >
+						    	<ion-label floating color="sas">Shift Perubahan</ion-label>
+						    	<ion-input type="text" required [(ngModel)]="nama_shift_perubahan" name="nama_shift_perubahan" (ionFocus)="openModalShift(2)" ></ion-input>
+						  	</ion-item>
+			  			</ion-col>
+			  			<ion-col>
+			  				<ion-input type="hidden" [(ngModel)]="shift_perubahan" name="shift_perubahan" hide *ngIf="status_mod==0"></ion-input>
+			  				<ion-input type="hidden" [(ngModel)]="shift_awal" name="shift_awal" hide *ngIf="status_mod==0"></ion-input>
+			  				
+			  				<ion-input type="hidden" [(ngModel)]="p_karyawan_id_perubahan" name="p_karyawan_id_perubahan" hide ></ion-input>
+			  				<ion-input type="hidden" [(ngModel)]="appr_1" name="appr_1" hide ></ion-input>
+			  				<ion-input type="hidden" [(ngModel)]="appr_2" name="appr_2" hide ></ion-input>
+						    <ion-input type="hidden" [(ngModel)]="appr_3" name="appr_3" hide ></ion-input>
+			  			</ion-col>
+			  			<ion-col col-12 style="margin-top: 20px;padding-left:20px;">
+			  				<button type="submit" ion-button full class="backgroud-sas">SUBMIT</button>
+			  			</ion-col>
+			  		</ion-row>
+			  	</form>
+		  	</div>
+		</ion-grid>
 </ion-content>
