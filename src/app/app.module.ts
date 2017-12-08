@@ -32,7 +32,7 @@ import { CalendarModule } from "ion2-calendar";
 import { Camera } from '@ionic-native/camera';
 import { Push} from '@ionic-native/push';
 import { FCM } from '@ionic-native/fcm';
-
+import { Keyboard } from '@ionic-native/keyboard';
 const config: SocketIoConfig = { url: 'http://localhost:3001', options: {} };
 
 @NgModule({
@@ -97,7 +97,8 @@ const config: SocketIoConfig = { url: 'http://localhost:3001', options: {} };
     FCM,
     {provide: ErrorHandler, useClass: IonicErrorHandler},
     KaryawanProvider,
-    Camera
+    Camera,
+    Keyboard
   ]
 })
 export class AppModule {}

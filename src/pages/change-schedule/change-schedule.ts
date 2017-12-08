@@ -1,11 +1,11 @@
 import { Component,isDevMode } from '@angular/core';
-import { NavController, NavParams,ModalController } from 'ionic-angular';
+import { NavController, NavParams,ModalController,AlertController,ToastController,LoadingController } from 'ionic-angular';
 import { NgForm } from '@angular/forms';
 import { CalendarModal } from "ion2-calendar";
-import { AlertController } from 'ionic-angular';
 import { ListKaryawanModalPage } from '../list-karyawan-modal/list-karyawan-modal'
 import { ShiftModalPage } from '../shift-modal/shift-modal';
-
+import { KaryawanProvider } from '../../providers/karyawan/karyawan';
+import { ListChangeSchedulePage } from '../list-change-schedule/list-change-schedule';
 /**
  * Generated class for the ChangeSchedulePage page.
  *
@@ -31,10 +31,15 @@ export class ChangeSchedulePage {
   nama_shift_perubahan:string;
   shift_awal:number;
   shift_perubahan:number;
+  loading;
 
   constructor(
     public navCtrl: NavController, 
     public navParams: NavParams,
+    public loadingCtrl: LoadingController,
+    public toastCtrl: ToastController,
+    public alertCtrl: AlertController,
+    public karyawanProvider: KaryawanProvider,
     public modalCtrl: ModalController) {
     this.list_jenis_izin = [
       { id: '0', nama: "Change Off" },
@@ -111,9 +116,80 @@ export class ChangeSchedulePage {
     })
   }
 
+  showAlert(message: string) {
+    let alert = this.alertCtrl.create({
+      title: 'Warning',
+      subTitle: message,
+      buttons: ['OK']
+    });
+    alert.present();
+  }
+
+  presentLoadingDefault() {
+    this.loading = this.loadingCtrl.create({
+      content: 'Please wait...'
+    });
+
+    this.loading.present();
+  }
+
+  presentToast(message: string) {
+    const toast = this.toastCtrl.create({
+      message: message,
+      duration: 3000,
+      position: 'bottom'
+    });
+
+    toast.onDidDismiss(() => {
+      console.log('Dismissed toast');
+    });
+
+    toast.present();
+  }
+
   storeReschedule(form: NgForm) {
+    
     if (isDevMode()) {
       console.log(form.value);
+    }
+
+    if (!form.value.nama_tukeran) {
+      this.showAlert("Nama pengganti Required");
+      return false;
+    }
+
+    if(!form.value.nama_hod) {
+      this.showAlert("HOD Required");
+      return false;
+    }
+
+    if(!form.value.nama_hrd.length) {
+      this.showAlert("HOD Required");
+      return false;
+    }
+    
+    if (!form.value.tgl_awal) {
+      this.showAlert("Tanggal Awal Required");
+      return false;
+    }
+
+    if(!form.value.tgl_perubahan) {
+      this.showAlert("Tanggal Perubahan Required");
+      return false;
+    }
+
+    if (form.valid) {
+      this.presentLoadingDefault();
+      return this.karyawanProvider.storeReschedule(form).subscribe(Resobject => {
+        if (Resobject.code == 200) {
+          this.presentToast("Success save");
+          this.navCtrl.setRoot(ListChangeSchedulePage);
+          this.loading.dismiss();
+        } else {
+          this.presentToast(Resobject.message);
+          this.loading.dismiss();
+        }
+      });
     }
   }
 

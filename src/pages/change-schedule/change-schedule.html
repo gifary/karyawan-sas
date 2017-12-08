@@ -18,17 +18,29 @@
 									<ion-option *ngFor="let izin of list_jenis_izin" [value]="izin.id">{{izin.nama}}</ion-option>
 								</ion-select>
 						  	</ion-item>
+						  	<ion-row>
+								<ion-col col-12 style="padding-left:20px;">
+									<button type="button" ion-button (click)="openModalKaryawan(1)" full class="backgroud-sas">PENGGANTI</button>
+								</ion-col>
+							</ion-row>
 						  	<ion-item class="backgroud-sas-putih" >
-						    	<ion-label floating color="sas">TUKAR DENGAN</ion-label>
-						    	<ion-input type="text" required [(ngModel)]="nama_tukeran" name="nama_tukeran" (ionFocus)="openModalKaryawan(1)"></ion-input>
+						    	<ion-input type="text" required [(ngModel)]="nama_tukeran" name="nama_tukeran" readonly></ion-input>
 						  	</ion-item>
+						  	<ion-row>
+								<ion-col col-12 style="padding-left:20px;">
+									<button type="button" ion-button (click)="openModalKaryawan(2)" full class="backgroud-sas">HOD/EAM</button>
+								</ion-col>
+							</ion-row>
 						  	<ion-item class="backgroud-sas-putih" >
-						    	<ion-label floating color="sas">HOD/EAM</ion-label>
-						    	<ion-input type="text" required [(ngModel)]="nama_hod" name="nama_hod" (ionFocus)="openModalKaryawan(2)" ></ion-input>
+						    	<ion-input type="text" required [(ngModel)]="nama_hod" name="nama_hod" readonly ></ion-input>
 						  	</ion-item>
+						  	<ion-row>
+								<ion-col col-12 style="padding-left:20px;">
+									<button type="button" ion-button (click)="openModalKaryawan(4)" full class="backgroud-sas">HRD</button>
+								</ion-col>
+							</ion-row>
 						  	<ion-item class="backgroud-sas-putih" >
-						    	<ion-label floating color="sas">HRD</ion-label>
-						    	<ion-input type="text" required [(ngModel)]="nama_hrd" name="nama_hrd" (ionFocus)="openModalKaryawan(4)" ></ion-input>
+						    	<ion-input type="text" required [(ngModel)]="nama_hrd" name="nama_hrd" readonly ></ion-input>
 						  	</ion-item>
 						  	<ion-item class="backgroud-sas-putih">
 						    	<ion-label floating color="sas">Tanggal Awal</ion-label>
@@ -38,19 +50,26 @@
 						    	<ion-label floating color="sas">Tanggal Perubahan</ion-label>
 						    	<ion-input type="text" name="tgl_perubahan" id="date" class="sas" color="sas" (ionFocus)="openCalendar(2)" readonly [(ngModel)]='tgl_perubahan' style="color:#000;" required></ion-input>
 						  	</ion-item>
+						  	<ion-row *ngIf="status_mod==0">
+								<ion-col col-12 style="padding-left:20px;">
+									<button type="button" ion-button (click)="openModalShift(1)" full class="backgroud-sas">Shift Awal</button>
+								</ion-col>
+							</ion-row>
 						  	<ion-item class="backgroud-sas-putih" *ngIf="status_mod==0">
-						    	<ion-label floating color="sas">Shift Awal</ion-label>
-						    	<ion-input type="text" required [(ngModel)]="nama_shift_awal" name="nama_shift_awal" (ionFocus)="openModalShift(1)" ></ion-input>
+						    	<ion-input type="text" required [(ngModel)]="nama_shift_awal" name="nama_shift_awal" readonly ></ion-input>
 						  	</ion-item>
+						  	<ion-row *ngIf="status_mod==0">
+								<ion-col col-12 style="padding-left:20px;">
+									<button type="button" ion-button (click)="openModalShift(2)" full class="backgroud-sas">Shift Perubahan</button>
+								</ion-col>
+							</ion-row>
 						  	<ion-item class="backgroud-sas-putih" *ngIf="status_mod==0" >
-						    	<ion-label floating color="sas">Shift Perubahan</ion-label>
-						    	<ion-input type="text" required [(ngModel)]="nama_shift_perubahan" name="nama_shift_perubahan" (ionFocus)="openModalShift(2)" ></ion-input>
+						    	<ion-input type="text" required [(ngModel)]="nama_shift_perubahan" name="nama_shift_perubahan" readonly ></ion-input>
 						  	</ion-item>
 			  			</ion-col>
 			  			<ion-col>
 			  				<ion-input type="hidden" [(ngModel)]="shift_perubahan" name="shift_perubahan" hide *ngIf="status_mod==0"></ion-input>
 			  				<ion-input type="hidden" [(ngModel)]="shift_awal" name="shift_awal" hide *ngIf="status_mod==0"></ion-input>
-			  				
 			  				<ion-input type="hidden" [(ngModel)]="p_karyawan_id_perubahan" name="p_karyawan_id_perubahan" hide ></ion-input>
 			  				<ion-input type="hidden" [(ngModel)]="appr_1" name="appr_1" hide ></ion-input>
 			  				<ion-input type="hidden" [(ngModel)]="appr_2" name="appr_2" hide ></ion-input>

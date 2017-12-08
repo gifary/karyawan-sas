@@ -11,7 +11,9 @@ import { AlertController } from 'ionic-angular';
 import { ToastController } from 'ionic-angular';
 import { ListPermitPage } from '../list-permit/list-permit';
 import { LoadingController } from 'ionic-angular';
-import { ListKaryawanModalPage } from '../list-karyawan-modal/list-karyawan-modal'
+import { ListKaryawanModalPage } from '../list-karyawan-modal/list-karyawan-modal';
+import { Keyboard } from '@ionic-native/keyboard';
+
 /**
  * Generated class for the PermitPage page.
  *
@@ -50,11 +52,13 @@ export class PermitPage {
     private localStorageService: LocalStorageService,
     public alertCtrl: AlertController,
     public toastCtrl: ToastController,
+    public keyboard: Keyboard,
     public loadingCtrl: LoadingController) {
 
   }
 
   openModal(type_karyawan) {
+    this.keyboard.close();
     let obj = { id: type_karyawan };
     var myModal = this.modalCtrl.create(ListKaryawanModalPage, obj);
     myModal.present();

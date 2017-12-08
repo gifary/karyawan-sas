@@ -53,17 +53,29 @@
 							</ion-row>
 			  			</ion-col>
 			  			<ion-col col-12>
+			  				<ion-row>
+								<ion-col col-12 style="padding-left:20px;">
+									<button type="button" ion-button (click)="openModal(1)" full class="backgroud-sas">PILIH HOD</button>
+								</ion-col>
+							</ion-row>
 			  				<ion-item class="backgroud-sas-putih" >
-						    	<ion-label floating color="sas">PILIH HOD</ion-label>
-						    	<ion-input type="text" required [(ngModel)]="nama_hod" name="nama_hod" (ionFocus)="openModal(1)"></ion-input>
+						    	<ion-input type="text" required [(ngModel)]="nama_hod" name="nama_hod" readonly></ion-input>
 						  	</ion-item>
+						  	<ion-row>
+								<ion-col col-12 style="padding-left:20px;">
+									<button type="button" ion-button (click)="openModal(2)" full class="backgroud-sas">PILIH HRD</button>
+								</ion-col>
+							</ion-row>
 						  	<ion-item class="backgroud-sas-putih" >
-						    	<ion-label floating color="sas">PILIH HRD</ion-label>
-						    	<ion-input type="text" required [(ngModel)]="nama_hrd" name="nama_hrd" (ionFocus)="openModal(2)" ></ion-input>
+						    	<ion-input type="text" required [(ngModel)]="nama_hrd" name="nama_hrd" readonly ></ion-input>
 						  	</ion-item>
+						  	<ion-row *ngIf="show_jam">
+								<ion-col col-12 style="padding-left:20px;">
+									<button type="button" ion-button (click)="openModal(3)" full class="backgroud-sas">PILIH SECURITY</button>
+								</ion-col>
+							</ion-row>
 						  	<ion-item class="backgroud-sas-putih" *ngIf="show_jam" >
-						    	<ion-label floating color="sas">Security</ion-label>
-						    	<ion-input type="text" required [(ngModel)]="nama_security" name="nama_security" (ionFocus)="openModal(3)" ></ion-input>
+						    	<ion-input type="text" required [(ngModel)]="nama_security" readonly name="nama_security" ></ion-input>
 						  	</ion-item>
 			  			</ion-col>
 			  			<ion-col>

@@ -165,22 +165,12 @@ export class KaryawanProvider {
       .catch(this.handleErrorObservable); 
   }
 
-  listReScheduleShift(p_karyawan_id:number): Observable<ResArray>{
+  listReSchedule(p_karyawan_id:number,status_mod:number): Observable<ResArray>{
     let headers = new Headers({'Content-Type': 'application/json'});  
     headers.append('Authorization','Bearer '+this.api_key);
     let options = new RequestOptions({headers: headers});
 
-    return this.http.get(`${this.base_url}/get-list-reschedule/0/`+p_karyawan_id,options)
-      .map(this.extractData)
-      .catch(this.handleErrorObservable); 
-  }
-
-  listReScheduleMod(p_karyawan_id:number): Observable<ResArray>{
-    let headers = new Headers({'Content-Type': 'application/json'});  
-    headers.append('Authorization','Bearer '+this.api_key);
-    let options = new RequestOptions({headers: headers});
-
-    return this.http.get(`${this.base_url}/get-list-reschedule/1/`+p_karyawan_id,options)
+    return this.http.get(`${this.base_url}/get-list-reschedule/`+status_mod+`/`+p_karyawan_id,options)
       .map(this.extractData)
       .catch(this.handleErrorObservable); 
   }
@@ -204,6 +194,18 @@ export class KaryawanProvider {
     let options = new RequestOptions({headers: headers});
 
     return this.http.get(`${this.base_url}/shift`,options)
+      .map(this.extractData)
+      .catch(this.handleErrorObservable); 
+  }
+
+  updateReschedule(status_persetujuan:number,t_reschedule_id:number){
+    let headers = new Headers({'Content-Type': 'application/json'});  
+    headers.append('Authorization','Bearer '+this.api_key);
+    headers.append("Access-Control-Allow-Methods", "GET, POST, OPTIONS, PUT, DELETE");
+    let options = new RequestOptions({headers: headers});
+    const body = {status_persetujuan: status_persetujuan};
+
+    return this.http.put(`${this.base_url}/reschedule/`+t_reschedule_id,body,options)
       .map(this.extractData)
       .catch(this.handleErrorObservable); 
   }

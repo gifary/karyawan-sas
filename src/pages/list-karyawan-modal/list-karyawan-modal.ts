@@ -3,7 +3,7 @@ import { NavController, NavParams, ViewController, LoadingController } from 'ion
 import { KaryawanProvider } from '../../providers/karyawan/karyawan';
 import { LocalStorageService } from 'angular-2-local-storage';
 import { Resobject } from '../../models/resobject';
-
+import { Keyboard } from '@ionic-native/keyboard';
 /**
  * Generated class for the ListKaryawanModalPage page.
  *
@@ -28,7 +28,8 @@ export class ListKaryawanModalPage {
 		public viewCtrl: ViewController,
 		private localStorageService: LocalStorageService,
 		public loadingCtrl: LoadingController,
-		public karyawanProvider: KaryawanProvider, ) {
+		public keyboard: Keyboard,
+		public karyawanProvider: KaryawanProvider ) {
 	}
 
 	presentLoadingDefault() {
@@ -40,6 +41,7 @@ export class ListKaryawanModalPage {
     }
 
 	ionViewDidLoad() {
+		this.keyboard.close();
 		this.presentLoadingDefault();
 		if (this.id == 3) {
 			this.getListSecurity();
@@ -83,7 +85,6 @@ export class ListKaryawanModalPage {
 					nama: data[key]
 				});
 			}
-			this.loading.dismiss();
 		}else{
 			this.karyawanProvider.listKaryawan(m_lokasi_id).subscribe(Resobject => {
 				this.resobject = Resobject;
@@ -103,10 +104,10 @@ export class ListKaryawanModalPage {
 							nama: data[key]
 						});
 					}
-					this.loading.dismiss();
 				}
 			})
 		}
+		this.loading.dismiss();
 	}
 
 	private getListSecurity() {
@@ -125,7 +126,6 @@ export class ListKaryawanModalPage {
 					nama: data[key]
 				});
 			}
-			this.loading.dismiss();
 		}else{
 			this.karyawanProvider.listSecurity(m_lokasi_id).subscribe(Resobject => {
 				this.resobject = Resobject;
@@ -144,11 +144,10 @@ export class ListKaryawanModalPage {
 							nama: data[key]
 						});
 					}
-					this.loading.dismiss();
 				}
 			})
 		}
-		
+		this.loading.dismiss();
 	}
 
 }
