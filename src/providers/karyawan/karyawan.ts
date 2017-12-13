@@ -175,6 +175,16 @@ export class KaryawanProvider {
       .catch(this.handleErrorObservable); 
   }
 
+  listProsesReschedule(p_karyawan_id:number): Observable<ResArray>{
+    let headers = new Headers({'Content-Type': 'application/json'});  
+    headers.append('Authorization','Bearer '+this.api_key);
+    let options = new RequestOptions({headers: headers});
+
+    return this.http.get(`${this.base_url}/get-list-reschedule-approval/`+p_karyawan_id,options)
+      .map(this.extractData)
+      .catch(this.handleErrorObservable);
+  }
+
   storeReschedule(form:NgForm): Observable<Resobject> {
       // headers.append('Access-Control-Allow-Origin','*');
       let headers = new Headers({'Content-Type': 'application/json'});  

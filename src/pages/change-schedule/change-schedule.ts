@@ -49,6 +49,11 @@ export class ChangeSchedulePage {
   }
 
   ionViewDidLoad() {
+    this.nama_tukeran ="PILIH";
+    this.nama_hod = "PILIH HOD/EAM";
+    this.nama_hrd = "PILIH HRD";
+    this.nama_shift_awal ="PILIH";
+    this.nama_shift_perubahan ="PILIH";
   }
   openModalShift(type){
     var modalShift = this.modalCtrl.create(ShiftModalPage);
@@ -99,6 +104,7 @@ export class ChangeSchedulePage {
     let myCalendar = this.modalCtrl.create(CalendarModal, {
       options: options
     });
+    myCalendar.dismiss();
 
     myCalendar.present();
 

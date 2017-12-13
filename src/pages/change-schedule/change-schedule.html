@@ -13,58 +13,48 @@
 		  			<ion-row center>
 		  				<ion-col col-12>
 		  					<ion-item class="backgroud-sas-putih" *ngIf="status_mod==0">
-						    	<ion-label floating color="sas">Jenis Izin</ion-label>
+						    	<ion-label floating color="dark">Jenis Izin</ion-label>
 						    	<ion-select [(ngModel)]="jenis_izin" name="jenis_izin" color="sas" required>
 									<ion-option *ngFor="let izin of list_jenis_izin" [value]="izin.id">{{izin.nama}}</ion-option>
 								</ion-select>
 						  	</ion-item>
-						  	<ion-row>
-								<ion-col col-12 style="padding-left:20px;">
-									<button type="button" ion-button (click)="openModalKaryawan(1)" full class="backgroud-sas">PENGGANTI</button>
-								</ion-col>
-							</ion-row>
 						  	<ion-item class="backgroud-sas-putih" >
-						    	<ion-input type="text" required [(ngModel)]="nama_tukeran" name="nama_tukeran" readonly></ion-input>
+						  		<ion-label color="dark">PENGGANTI</ion-label><br>
 						  	</ion-item>
-						  	<ion-row>
-								<ion-col col-12 style="padding-left:20px;">
-									<button type="button" ion-button (click)="openModalKaryawan(2)" full class="backgroud-sas">HOD/EAM</button>
-								</ion-col>
-							</ion-row>
 						  	<ion-item class="backgroud-sas-putih" >
-						    	<ion-input type="text" required [(ngModel)]="nama_hod" name="nama_hod" readonly ></ion-input>
+						  		<ion-label color="sas" (click)="openModalKaryawan(1)" name="nama_tukeran">{{nama_tukeran}}</ion-label>
 						  	</ion-item>
-						  	<ion-row>
-								<ion-col col-12 style="padding-left:20px;">
-									<button type="button" ion-button (click)="openModalKaryawan(4)" full class="backgroud-sas">HRD</button>
-								</ion-col>
-							</ion-row>
 						  	<ion-item class="backgroud-sas-putih" >
-						    	<ion-input type="text" required [(ngModel)]="nama_hrd" name="nama_hrd" readonly ></ion-input>
+						  		<ion-label color="dark">HOD/EAM</ion-label><br>
+						  	</ion-item>
+						  	<ion-item class="backgroud-sas-putih" >
+						  		<ion-label color="sas" (click)="openModalKaryawan(2)" name="nama_hod">{{nama_hod}}</ion-label>
+						  	</ion-item>
+						  	<ion-item class="backgroud-sas-putih" >
+						    	<ion-label color="dark">HRD</ion-label><br>
+						  	</ion-item>
+						  	<ion-item class="backgroud-sas-putih" >
+						  		<ion-label color="sas" (click)="openModalKaryawan(4)" name="nama_hrd">{{nama_hrd}}</ion-label>
 						  	</ion-item>
 						  	<ion-item class="backgroud-sas-putih">
-						    	<ion-label floating color="sas">Tanggal Awal</ion-label>
-						    	<ion-input type="text" name="tgl_awal" id="date" class="sas" color="sas" (ionFocus)="openCalendar(1)" readonly [(ngModel)]='tgl_awal' style="color:#000;" required></ion-input>
+						    	<ion-label floating color="dark">Tanggal Awal</ion-label>
+						    	<ion-input type="text" name="tgl_awal" id="date" class="sas" color="sas" (focus)="openCalendar(1)" readonly [(ngModel)]='tgl_awal' style="color:#000;" required></ion-input>
 						  	</ion-item>
 						  	<ion-item class="backgroud-sas-putih">
-						    	<ion-label floating color="sas">Tanggal Perubahan</ion-label>
-						    	<ion-input type="text" name="tgl_perubahan" id="date" class="sas" color="sas" (ionFocus)="openCalendar(2)" readonly [(ngModel)]='tgl_perubahan' style="color:#000;" required></ion-input>
+						    	<ion-label floating color="dark">Tanggal Perubahan</ion-label>
+						    	<ion-input type="text" name="tgl_perubahan" id="date" class="sas" color="sas" (focus)="openCalendar(2)" readonly [(ngModel)]='tgl_perubahan' style="color:#000;" required></ion-input>
 						  	</ion-item>
-						  	<ion-row *ngIf="status_mod==0">
-								<ion-col col-12 style="padding-left:20px;">
-									<button type="button" ion-button (click)="openModalShift(1)" full class="backgroud-sas">Shift Awal</button>
-								</ion-col>
-							</ion-row>
 						  	<ion-item class="backgroud-sas-putih" *ngIf="status_mod==0">
-						    	<ion-input type="text" required [(ngModel)]="nama_shift_awal" name="nama_shift_awal" readonly ></ion-input>
+						  		<ion-label color="dark" >Shift Awal</ion-label><br>
 						  	</ion-item>
-						  	<ion-row *ngIf="status_mod==0">
-								<ion-col col-12 style="padding-left:20px;">
-									<button type="button" ion-button (click)="openModalShift(2)" full class="backgroud-sas">Shift Perubahan</button>
-								</ion-col>
-							</ion-row>
+						  	<ion-item class="backgroud-sas-putih" *ngIf="status_mod==0">
+						  		<ion-label color="sas" (click)="openModalShift(1)" name="nama_shift_awal">{{nama_shift_awal}}</ion-label>
+						  	</ion-item>
 						  	<ion-item class="backgroud-sas-putih" *ngIf="status_mod==0" >
-						    	<ion-input type="text" required [(ngModel)]="nama_shift_perubahan" name="nama_shift_perubahan" readonly ></ion-input>
+						  		<ion-label color="dark">Shift Awal</ion-label><br>
+						  	</ion-item>
+						  	<ion-item class="backgroud-sas-putih" *ngIf="status_mod==0" >
+						  		<ion-label color="sas" (click)="openModalShift(2)" name="nama_shift_perubahan">{{nama_shift_perubahan}}</ion-label>
 						  	</ion-item>
 			  			</ion-col>
 			  			<ion-col>

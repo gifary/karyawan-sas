@@ -12,32 +12,32 @@
 		  			<ion-row center>
 		  				<ion-col col-12>
 		  					<ion-item class="backgroud-sas-putih">
-						    	<ion-label floating color="sas">Jenis Izin</ion-label>
+						    	<ion-label floating color="dark">Jenis Izin</ion-label>
 						    	<ion-select [(ngModel)]="jenis_izin" (ngModelChange)="changeJenisizin($event)" name="m_jenis_ijin_id" color="sas" required>
 									<ion-option *ngFor="let izin of list_izin" [value]="izin.id">{{izin.nama}}</ion-option>
 								</ion-select>
 						  	</ion-item>
 			  				<ion-item class="backgroud-sas-putih">
-						    	<ion-label floating color="sas">Tanggal Izin</ion-label>
+						    	<ion-label floating color="dark">Tanggal Izin</ion-label>
 						    	<ion-input type="text" name="tgl_awal" id="date" class="sas" color="sas" (ionFocus)="openCalendar()" readonly [(ngModel)]='tgl_awal' style="color:#000;" required></ion-input>
 						  	</ion-item>
 						  	<ion-item *ngIf="show_jam">
-								<ion-label floating color="sas">Start Time</ion-label>
+								<ion-label floating color="dark">Start Time</ion-label>
 								<ion-datetime displayFormat="H:mm" pickerFormat="H mm" [(ngModel)]="jam_awal" name="jam_awal" color="sas" required></ion-datetime>
 							</ion-item>
 							<ion-item *ngIf="show_jam">
-								<ion-label floating color="sas">End Time</ion-label>
+								<ion-label floating color="dark">End Time</ion-label>
 								<ion-datetime displayFormat="H:mm" pickerFormat="H mm" [(ngModel)]="jam_akhir" name="jam_akhir" color="sas" required></ion-datetime>
 							</ion-item>
 							<ion-item>
-							    <ion-label floating color="sas">Keterangan</ion-label>
+							    <ion-label floating color="dark">Keterangan</ion-label>
 							    <div item-content style="width:100%;">
 							      <ion-textarea autosize [(ngModel)]="keterangan" ngModel name="keterangan" lineHeight="22" color="sas"></ion-textarea>
 							    </div>
 							</ion-item>
 			  			</ion-col>
 			  			<ion-col col-12 style="padding-left:20px;">
-			  				<ion-label color="sas">Bukti Izin</ion-label>
+			  				<ion-label color="dark">Bukti Izin</ion-label>
 			  				<ion-thumbnail item-start>
 						      <img [src]="cameraUrl" height="150px" *ngIf="cameraUrl">
 						    </ion-thumbnail>
@@ -53,29 +53,23 @@
 							</ion-row>
 			  			</ion-col>
 			  			<ion-col col-12>
-			  				<ion-row>
-								<ion-col col-12 style="padding-left:20px;">
-									<button type="button" ion-button (click)="openModal(1)" full class="backgroud-sas">PILIH HOD</button>
-								</ion-col>
-							</ion-row>
 			  				<ion-item class="backgroud-sas-putih" >
-						    	<ion-input type="text" required [(ngModel)]="nama_hod" name="nama_hod" readonly></ion-input>
+			  					<ion-label color="dark" >HOD</ion-label>
 						  	</ion-item>
-						  	<ion-row>
-								<ion-col col-12 style="padding-left:20px;">
-									<button type="button" ion-button (click)="openModal(2)" full class="backgroud-sas">PILIH HRD</button>
-								</ion-col>
-							</ion-row>
 						  	<ion-item class="backgroud-sas-putih" >
-						    	<ion-input type="text" required [(ngModel)]="nama_hrd" name="nama_hrd" readonly ></ion-input>
+			  					<ion-label color="sas" (click)="openModal(1)" name="nama_hod">{{nama_hod}}</ion-label>
 						  	</ion-item>
-						  	<ion-row *ngIf="show_jam">
-								<ion-col col-12 style="padding-left:20px;">
-									<button type="button" ion-button (click)="openModal(3)" full class="backgroud-sas">PILIH SECURITY</button>
-								</ion-col>
-							</ion-row>
+						  	<ion-item class="backgroud-sas-putih" >
+						  		<ion-label color="dark" >HRD</ion-label>
+						  	</ion-item>
+						  	<ion-item class="backgroud-sas-putih" >
+						  		<ion-label color="sas" (click)="openModal(2)" name="nama_hrd">{{nama_hrd}}</ion-label>
+						  	</ion-item>
 						  	<ion-item class="backgroud-sas-putih" *ngIf="show_jam" >
-						    	<ion-input type="text" required [(ngModel)]="nama_security" readonly name="nama_security" ></ion-input>
+						  		<ion-label color="dark">SECURITY</ion-label>
+						  	</ion-item>
+						  	<ion-item class="backgroud-sas-putih" *ngIf="show_jam" >
+						  		<ion-label color="sas" (click)="openModal(3)" name="nama_security">{{nama_security}}</ion-label>
 						  	</ion-item>
 			  			</ion-col>
 			  			<ion-col>

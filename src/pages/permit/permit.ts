@@ -83,7 +83,9 @@ export class PermitPage {
 
   ionViewDidLoad() {
     this.tgl_awal = "";
-    this.nama_hod = "";
+    this.nama_hod = "PILIH HOD";
+    this.nama_hrd = "PILIH HRD";
+    this.nama_security = "PILIH SECURITY";
     this.appr_1=0;
     this.appr_2=0;
     this.appr_3=0;

@@ -1,55 +1,118 @@
 <ion-header color="sas">
-  <ion-navbar color="sas">
-    <button ion-button menuToggle>
+  <ion-navbar no-border-bottom color="sas">
+  	<button ion-button menuToggle>
       <ion-icon name="menu"></ion-icon>
     </button>
-    <ion-title>List Need Approval</ion-title>
+    <ion-title>
+      List Approval
+    </ion-title>
   </ion-navbar>
+
+  <ion-toolbar no-border-top>
+    <ion-segment [(ngModel)]="schedule">
+      <ion-segment-button value="permit" color="white">
+        Permit/Leave
+      </ion-segment-button>
+      <ion-segment-button value="reschedule" color="white">
+        Reschedule
+      </ion-segment-button>
+    </ion-segment>
+  </ion-toolbar>
 </ion-header>
 
+
 <ion-content padding>
-	<ion-searchbar (input)="search($event)" (ionCancel)="onCancel($event)" placeholder="Search by name"></ion-searchbar>
-	<ion-refresher (ionRefresh)="doRefresh($event);">
-		<ion-refresher-content
-		  pullingText="Pull to refresh"
-	      pullingIcon="arrow-dropdown"
-	      refreshingSpinner="circles"
-	      refreshingText="..refresh"
-		>
-		</ion-refresher-content>
-	</ion-refresher>
-	<ion-list>
-		<div *ngIf="data?.length>=1">
-		    <button ion-item *ngFor="let permit of data" (click)="openMenu(permit)">
-		    	<ion-grid>
-		    		<ion-row>
-		    			<ion-col col-12>
-		    				<div text-wrap>
-		    					<b>{{permit.karyawan.nama}}</b>
-		    				</div>
-		    			</ion-col>
-		    			<ion-col col-12>
-		    				<div text-wrap class="font-12">
-		    					{{permit.jenis_ijin.nama}}
-		    				</div>
-		    			</ion-col>
-		    			<ion-col col-12>
-		    				<div text-wrap class="font-12">
-		    					{{ permit.tgl_pilih }} ({{ permit.lama }} Hari)
-		    				</div>
-		    			</ion-col>
-		    			<ion-col col-12>
-		    				<div text-wrap class="font-12">
-		    					{{ permit.keterangan }}
-		    				</div>
-		    			</ion-col>
-		    		</ion-row>
-		    	</ion-grid>
-		    </button>
+	<div [ngSwitch]="schedule">
+  	<ion-list *ngSwitchCase="'permit'">
+		<ion-searchbar (input)="search($event)" (ionCancel)="onCancel($event)" placeholder="Search by name"></ion-searchbar>
+		<ion-refresher (ionRefresh)="doRefresh($event);">
+			<ion-refresher-content
+			  pullingText="Pull to refresh"
+		      pullingIcon="arrow-dropdown"
+		      refreshingSpinner="circles"
+		      refreshingText="..refresh"
+			>
+			</ion-refresher-content>
+		</ion-refresher>
+		<ion-list>
+			<div *ngIf="data?.length>=1">
+			    <button ion-item *ngFor="let permit of data" (click)="openMenu(permit)">
+			    	<ion-grid>
+			    		<ion-row>
+			    			<ion-col col-12>
+			    				<div text-wrap>
+			    					<b>{{permit.karyawan.nama}}</b>
+			    				</div>
+			    			</ion-col>
+			    			<ion-col col-12>
+			    				<div text-wrap class="font-12">
+			    					{{permit.jenis_ijin.nama}}
+			    				</div>
+			    			</ion-col>
+			    			<ion-col col-12>
+			    				<div text-wrap class="font-12">
+			    					{{ permit.tgl_pilih }} ({{ permit.lama }} Hari)
+			    				</div>
+			    			</ion-col>
+			    			<ion-col col-12>
+			    				<div text-wrap class="font-12">
+			    					{{ permit.keterangan }}
+			    				</div>
+			    			</ion-col>
+			    		</ion-row>
+			    	</ion-grid>
+			    </button>
+			</div>
+	  	</ion-list>
+	  	<div *ngIf="data?.length==0">
+			<h3 text-center>Data Permit Not Found</h3>
 		</div>
   	</ion-list>
-  	<div *ngIf="data?.length==0">
-		<h3 text-center>Data Not Found</h3>
-	</div>
+  	
+
+    <ion-list *ngSwitchCase="'reschedule'">
+		<ion-searchbar (input)="searchRes($event)" (ionCancel)="onCancelRes($event)" placeholder="Search by name"></ion-searchbar>
+		<ion-refresher (ionRefresh)="doRefresh($event);">
+			<ion-refresher-content
+			  pullingText="Pull to refresh"
+		      pullingIcon="arrow-dropdown"
+		      refreshingSpinner="circles"
+		      refreshingText="..refresh"
+			>
+			</ion-refresher-content>
+		</ion-refresher>
+		<ion-list>
+			<div *ngIf="data_res?.length>=1">
+			    <button ion-item *ngFor="let res of data_res" (click)="openMenuRes(res)">
+			    	<ion-grid>
+			    		<ion-row>
+			    			<ion-col col-12>
+			    				<div text-wrap>
+			    					<b>{{res.karyawan.nama}}</b>
+			    				</div>
+			    			</ion-col>
+			    			<ion-col col-12>
+			    				<div text-wrap>
+			    					<b>{{res.jenis_izin}}</b>
+			    				</div>
+			    			</ion-col>
+			    			<ion-col col-12>
+			    				<div text-wrap class="font-12">
+			    					<ion-icon name="calendar">&nbsp; From {{ res.tgl_awal | date:'E,d-MMM-yy' }} To {{ res.tgl_perubahan | date:'E,d-MMM-yy' }} </ion-icon>
+			    				</div>
+			    			</ion-col>
+			    			
+			    		</ion-row>
+			    	</ion-grid>
+			    </button>
+			</div>
+	  	</ion-list>
+	  	<div *ngIf="data_res?.length==0">
+			<h3 text-center>Data Reschedule Not Found</h3>
+		</div>
+  	</ion-list>
+
+  </div>
+	
 </ion-content>
 
