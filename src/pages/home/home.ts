@@ -3,6 +3,7 @@ import { NavController } from 'ionic-angular';
 import { AlertController } from 'ionic-angular';
 import { LocalStorageService } from 'angular-2-local-storage';
 import { KaryawanProvider } from '../../providers/karyawan/karyawan';
+import { Resobject } from '../../models/Resobject';
 
 @Component({
   selector: 'page-home',
@@ -18,6 +19,7 @@ export class HomePage {
     qr_code: string;
     lokasi;departement;jabatan:string;
     absen: Array<any>;
+    persentase: Array<any>;
 
     constructor(
       public navCtrl: NavController,
@@ -42,10 +44,13 @@ export class HomePage {
 
     private getAbsen(){
       this.absen = [];
+      this.persentase=[];
       let no_absen = parseInt(this.localStorageService.get("no_absen")+'');
-      return this.karyawanProvider.listAbsen(no_absen).subscribe(ResArray=>{
-        if(ResArray.code==200){
-          this.absen = ResArray.data;
+      this.p_karyawan_id = parseInt(this.localStorageService.get('p_karyawan_id')+'');
+      return this.karyawanProvider.listAbsen(no_absen,this.p_karyawan_id).subscribe(Resobject=>{
+        if(Resobject.code==200){
+          this.absen = Resobject.data.absen;
+          this.persentase = Resobject.data.persentase;
         }else{
           console.log("error")
         }

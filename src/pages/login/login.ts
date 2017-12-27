@@ -2,12 +2,13 @@ import { Component, isDevMode } from '@angular/core';
 import { IonicPage,NavController,Platform,ToastController} from 'ionic-angular';
 import { NgForm } from '@angular/forms';
 import { KaryawanProvider } from '../../providers/karyawan/karyawan';
-import { Resobject } from '../../models/resobject';
+import { Resobject } from '../../models/Resobject';
 import { AlertController } from 'ionic-angular';
 import { LocalStorageService } from 'angular-2-local-storage';
 import { NavigationPage } from '../navigation/navigation';
 import { LoadingController } from 'ionic-angular';
 import { FCM } from '@ionic-native/fcm';
+import { MenuController } from 'ionic-angular';
 
 /**
  * Generated class for the LoginPage page.
@@ -34,7 +35,11 @@ export class LoginPage {
       public alertCtrl: AlertController,
       private localStorageService: LocalStorageService,
       public loadingCtrl: LoadingController,
+      public menu: MenuController,
       public fcm:FCM) {
+
+      // this.menu.get().enable(false);
+      this.menu.enable(false, 'NavMenu');
 
       let p_karyawan_id = this.localStorageService.get("p_karyawan_id");
       if(p_karyawan_id){
@@ -57,6 +62,9 @@ export class LoginPage {
       });
     }
 
+    ionViewWillUnload(){
+       this.menu.enable(false, 'NavMenu');
+    }
     presentLoadingDefault() {
       this.loading = this.loadingCtrl.create({
         content: 'Please wait...'

@@ -3,7 +3,7 @@ import { Http,Headers,RequestOptions,Response } from '@angular/http';
 import { Observable } from 'rxjs/Rx';
 import 'rxjs/add/operator/map';
 import { NgForm } from '@angular/forms';
-import { Resobject } from '../../models/resobject';
+import { Resobject } from '../../models/Resobject';
 import { ResArray } from '../../models/ResArray';
 import { config } from '../../config/config';
 /*
@@ -155,12 +155,12 @@ export class KaryawanProvider {
       .catch(this.handleErrorObservable); 
   }
 
-  listAbsen(no_absen:number): Observable<ResArray>{
+  listAbsen(no_absen:number,p_karyawan_id:number): Observable<Resobject>{
     let headers = new Headers({'Content-Type': 'application/json'});  
      headers.append('Authorization','Bearer '+this.api_key);
     let options = new RequestOptions({headers: headers});
 
-    return this.http.get(`${this.base_url}/get-list-absen/`+no_absen,options)
+    return this.http.get(`${this.base_url}/get-list-absen/`+no_absen+'/'+p_karyawan_id,options)
       .map(this.extractData)
       .catch(this.handleErrorObservable); 
   }

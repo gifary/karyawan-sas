@@ -4,7 +4,7 @@ import { CalendarModal } from "ion2-calendar";
 import { NgForm } from '@angular/forms';
 import { Camera } from 'ionic-native';
 import { KaryawanProvider } from '../../providers/karyawan/karyawan';
-import { Resobject } from '../../models/resobject';
+import { Resobject } from '../../models/Resobject';
 import { Observable } from 'rxjs/Rx';
 import { LocalStorageService } from 'angular-2-local-storage';
 import { AlertController } from 'ionic-angular';

@@ -3,6 +3,8 @@ import {  NavController, NavParams } from 'ionic-angular';
 import { LoginPage } from '../login/login';
 import { LocalStorageService } from 'angular-2-local-storage';
 import { KaryawanProvider } from '../../providers/karyawan/karyawan';
+import { MenuController } from 'ionic-angular';
+
 /**
  * Generated class for the LogoutPage page.
  *
@@ -20,6 +22,7 @@ export class LogoutPage {
     public karyawanProvider: KaryawanProvider,
     public navCtrl: NavController, 
   	public navParams: NavParams,
+    public menu: MenuController,
   	private localStorageService: LocalStorageService) {
   }
 
@@ -31,7 +34,10 @@ export class LogoutPage {
     });
 
     this.localStorageService.clearAll();
-    this.navCtrl.push(LoginPage,{});
+    this.navCtrl.setRoot(LoginPage,{animate:true,animation:"md-transition",direction:"back",duration:1000});
   }
 
+  ionViewWillUnload(){
+       this.menu.enable(false, 'NavMenu');
+  }
 }

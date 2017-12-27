@@ -2,7 +2,7 @@ import { Component } from '@angular/core';
 import { NavController, NavParams, ViewController, LoadingController } from 'ionic-angular';
 import { KaryawanProvider } from '../../providers/karyawan/karyawan';
 import { LocalStorageService } from 'angular-2-local-storage';
-import { Resobject } from '../../models/resobject';
+import { Resobject } from '../../models/Resobject';
 import { Keyboard } from '@ionic-native/keyboard';
 /**
  * Generated class for the ListKaryawanModalPage page.
