@@ -44,7 +44,7 @@
 						    	<ion-label floating color="dark">Tanggal Perubahan</ion-label>
 						    	<ion-input type="text" name="tgl_perubahan" id="date" class="sas" color="sas" (focus)="openCalendar(2)" readonly [(ngModel)]='tgl_perubahan' style="color:#000;" required></ion-input>
 						  	</ion-item>
-						  	<ion-item class="backgroud-sas-putih" *ngIf="status_mod==0">
+						  	<!-- <ion-item class="backgroud-sas-putih" *ngIf="status_mod==0">
 						  		<ion-label color="dark" >Shift Awal</ion-label><br>
 						  	</ion-item>
 						  	<ion-item class="backgroud-sas-putih" *ngIf="status_mod==0">
@@ -55,12 +55,13 @@
 						  	</ion-item>
 						  	<ion-item class="backgroud-sas-putih" *ngIf="status_mod==0" >
 						  		<ion-label color="sas" (click)="openModalShift(2)" name="nama_shift_perubahan">{{nama_shift_perubahan}}</ion-label>
-						  	</ion-item>
+						  	</ion-item> -->
 			  			</ion-col>
 			  			<ion-col>
-			  				<ion-input type="hidden" [(ngModel)]="shift_perubahan" name="shift_perubahan" hide *ngIf="status_mod==0"></ion-input>
+			  				<!-- <ion-input type="hidden" [(ngModel)]="shift_perubahan" name="shift_perubahan" hide *ngIf="status_mod==0"></ion-input> -->
 			  				<ion-input type="hidden" [(ngModel)]="shift_awal" name="shift_awal" hide *ngIf="status_mod==0"></ion-input>
 			  				<ion-input type="hidden" [(ngModel)]="p_karyawan_id_perubahan" name="p_karyawan_id_perubahan" hide ></ion-input>
+			  				<ion-input type="hidden" [(ngModel)]="p_karyawan_id" name="p_karyawan_id" hide ></ion-input>
 			  				<ion-input type="hidden" [(ngModel)]="appr_1" name="appr_1" hide ></ion-input>
 			  				<ion-input type="hidden" [(ngModel)]="appr_2" name="appr_2" hide ></ion-input>
 						    <ion-input type="hidden" [(ngModel)]="appr_3" name="appr_3" hide ></ion-input>

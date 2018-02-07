@@ -6,6 +6,7 @@ import { ListKaryawanModalPage } from '../list-karyawan-modal/list-karyawan-moda
 import { ShiftModalPage } from '../shift-modal/shift-modal';
 import { KaryawanProvider } from '../../providers/karyawan/karyawan';
 import { ListChangeSchedulePage } from '../list-change-schedule/list-change-schedule';
+import { LocalStorageService } from 'angular-2-local-storage';
 /**
  * Generated class for the ChangeSchedulePage page.
  *
@@ -32,6 +33,7 @@ export class ChangeSchedulePage {
   shift_awal:number;
   shift_perubahan:number;
   loading;
+  p_karyawan_id:any;
 
   constructor(
     public navCtrl: NavController, 
@@ -40,12 +42,14 @@ export class ChangeSchedulePage {
     public toastCtrl: ToastController,
     public alertCtrl: AlertController,
     public karyawanProvider: KaryawanProvider,
+    public localStorageService: LocalStorageService,
     public modalCtrl: ModalController) {
     this.list_jenis_izin = [
       { id: '0', nama: "Change Off" },
       { id: '1', nama: 'Change Shift' },
       { id: '2', nama: 'Change Public Holiday' }
     ];
+    this.p_karyawan_id = parseInt(this.localStorageService.get('p_karyawan_id') + '');
   }
 
   ionViewDidLoad() {

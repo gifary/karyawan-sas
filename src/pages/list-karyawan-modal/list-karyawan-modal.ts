@@ -30,6 +30,12 @@ export class ListKaryawanModalPage {
 		public loadingCtrl: LoadingController,
 		public keyboard: Keyboard,
 		public karyawanProvider: KaryawanProvider ) {
+		this.presentLoadingDefault();
+		if (this.id == 3) {
+			this.getListSecurity();
+		} else {
+			this.getListKaryawan();
+		}
 	}
 
 	presentLoadingDefault() {
@@ -42,12 +48,7 @@ export class ListKaryawanModalPage {
 
 	ionViewDidLoad() {
 		this.keyboard.close();
-		this.presentLoadingDefault();
-		if (this.id == 3) {
-			this.getListSecurity();
-		} else {
-			this.getListKaryawan();
-		}
+		
 	}
 
 	dismiss(karyawan) {
@@ -85,6 +86,7 @@ export class ListKaryawanModalPage {
 					nama: data[key]
 				});
 			}
+			this.loading.dismiss();
 		}else{
 			this.karyawanProvider.listKaryawan(m_lokasi_id).subscribe(Resobject => {
 				this.resobject = Resobject;
@@ -105,9 +107,10 @@ export class ListKaryawanModalPage {
 						});
 					}
 				}
+				this.loading.dismiss();
 			})
 		}
-		this.loading.dismiss();
+		// this.loading.dismiss();
 	}
 
 	private getListSecurity() {
@@ -126,6 +129,7 @@ export class ListKaryawanModalPage {
 					nama: data[key]
 				});
 			}
+			this.loading.dismiss();
 		}else{
 			this.karyawanProvider.listSecurity(m_lokasi_id).subscribe(Resobject => {
 				this.resobject = Resobject;
@@ -145,9 +149,10 @@ export class ListKaryawanModalPage {
 						});
 					}
 				}
+				this.loading.dismiss();
 			})
 		}
-		this.loading.dismiss();
+		
 	}
 
 }
