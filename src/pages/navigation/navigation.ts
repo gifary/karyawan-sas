@@ -13,6 +13,8 @@ import { QrcodePage } from '../qrcode/qrcode';
 import { ListPermitProsesPage } from '../list-permit-proses/list-permit-proses';
 import { ListSessionPage } from '../list-session/list-session';
 import { ListChangeSchedulePage } from '../list-change-schedule/list-change-schedule';
+import { ListLateEmployeePage } from '../list-late-employee/list-late-employee';
+
 /**
  * Generated class for the NavigationPage page.
  *
@@ -47,7 +49,8 @@ export class NavigationPage {
       { title: 'Reschedule', component: ListChangeSchedulePage },
       { title: 'Approval', component: ListPermitProsesPage },
       { title: 'Training', component: ListSessionPage },
-      { title: 'Qr Code', component: QrcodePage },
+      { title: 'Lateness', component: ListLateEmployeePage },
+      // { title: 'Qr Code', component: QrcodePage },
       { title: 'Logout', component: LogoutPage },
     ];
     if(isDevMode()){

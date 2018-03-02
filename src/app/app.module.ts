@@ -22,7 +22,7 @@ import { ListKaryawanModalPage } from '../pages/list-karyawan-modal/list-karyawa
 import { ChangeSchedulePage } from '../pages/change-schedule/change-schedule';
 import { ListChangeSchedulePage } from '../pages/list-change-schedule/list-change-schedule';
 import { ShiftModalPage } from '../pages/shift-modal/shift-modal';
-
+import { ListLateEmployeePage } from '../pages/list-late-employee/list-late-employee';
 import { KaryawanProvider } from '../providers/karyawan/karyawan';
 import { HttpModule } from '@angular/http';
 import { LocalStorageModule } from 'angular-2-local-storage';
@@ -53,7 +53,8 @@ const config: SocketIoConfig = { url: 'http://localhost:3001', options: {} };
     ListKaryawanModalPage,
     ChangeSchedulePage,
     ListChangeSchedulePage,
-    ShiftModalPage
+    ShiftModalPage,
+    ListLateEmployeePage
   ],
   imports: [
     BrowserModule,
@@ -88,7 +89,8 @@ const config: SocketIoConfig = { url: 'http://localhost:3001', options: {} };
     ListKaryawanModalPage,
     ShiftModalPage,
     ChangeSchedulePage,
-    ListChangeSchedulePage
+    ListChangeSchedulePage,
+    ListLateEmployeePage
   ],
   providers: [
     StatusBar,

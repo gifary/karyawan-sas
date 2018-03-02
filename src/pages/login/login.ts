@@ -50,16 +50,16 @@ export class LoginPage {
         }
         
       }
-      platform.ready().then(() => {
-          platform.registerBackButtonAction(()=>{
-            let toast = this.toastCtrl.create({
-                message:  'Warning, you can\'t go back',
-                duration: 3000,
-                position: 'bottom'
-            });
-            toast.present();
-          });
-      });
+      // platform.ready().then(() => {
+      //     platform.registerBackButtonAction(()=>{
+      //       let toast = this.toastCtrl.create({
+      //           message:  'Warning, you can\'t go back',
+      //           duration: 3000,
+      //           position: 'bottom'
+      //       });
+      //       toast.present();
+      //     });
+      // });
     }
 
     ionViewWillUnload(){
@@ -85,6 +85,7 @@ export class LoginPage {
           this.data = resObject.data;
 	        this.localStorageService.set("p_karyawan_id",this.data.karyawan.p_karyawan_id);
           this.localStorageService.set("user_id",this.data.id);
+          this.localStorageService.set("api_token",this.data.token);
           this.localStorageService.set("email_perusahaan",this.data.karyawan.email_perusahaan);
           this.localStorageService.set("nik",this.data.karyawan.nik);
           this.localStorageService.set("nama",this.data.karyawan.nama);

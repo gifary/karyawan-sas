@@ -11,6 +11,7 @@ This is application create using ionic and angular 4. This application still dev
 - Integration notification with FCM
 - List Training Employee
 - Change Schedule Shift
+- List lateness employee
 ### Comming Soon
 - List comming soon event
 - Chat room employee and HRD.

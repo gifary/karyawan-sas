@@ -1,0 +1,39 @@
+<ion-header color="sas">
+  <ion-navbar color="sas">
+    <button ion-button menuToggle>
+      <ion-icon name="menu"></ion-icon>
+    </button>
+    <ion-title>Lateness Employee Today</ion-title>
+  </ion-navbar>
+</ion-header>
+
+
+<ion-content padding>
+	<ion-refresher (ionRefresh)="doRefresh($event);">
+		<ion-refresher-content
+		  pullingText="Pull to refresh"
+	      pullingIcon="arrow-dropdown"
+	      refreshingSpinner="circles"
+	      refreshingText="..refresh"
+		>
+		</ion-refresher-content>
+	</ion-refresher>
+	<ion-list>
+		<div *ngIf="data?.length>=1">
+		    <button ion-item *ngFor="let late of data">
+		    	<ion-grid>
+		    		<ion-row>
+		    			<ion-col col-12>
+		    				<div text-wrap>
+		    					<b>{{late.nama_lengkap}}</b>
+		    				</div>
+		    			</ion-col>
+		    		</ion-row>
+		    	</ion-grid>
+		    </button>
+		</div>
+		<div *ngIf="data?.length==0">
+			<h3 text-center>Data Not Found</h3>
+		</div>
+  	</ion-list>
+</ion-content>

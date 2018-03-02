@@ -1,4 +1,4 @@
-import { Injectable } from '@angular/core';
+import { Injectable,OnInit } from '@angular/core';
 import { Http,Headers,RequestOptions,Response } from '@angular/http';
 import { Observable } from 'rxjs/Rx';
 import 'rxjs/add/operator/map';
@@ -6,6 +6,7 @@ import { NgForm } from '@angular/forms';
 import { Resobject } from '../../models/Resobject';
 import { ResArray } from '../../models/ResArray';
 import { config } from '../../config/config';
+import { LocalStorageService } from 'angular-2-local-storage';
 /*
   Generated class for the KaryawanProvider provider.
 
@@ -13,19 +14,26 @@ import { config } from '../../config/config';
   and Angular DI.
 */
 @Injectable()
-export class KaryawanProvider {
+export class KaryawanProvider implements OnInit {
 	
   base_url = config.base_url;
-	api_key = config.api_key;
+	private api_key: string;
 
-  constructor(public http: Http) {
+  constructor(
+    public http: Http,
+    public localStorageService: LocalStorageService) {
+    this.api_key= this.localStorageService.get("api_token")+"";
+  }
+  
+  ngOnInit(){
+    this.api_key= this.localStorageService.get("api_token")+"";
+
   }
 
   login(email: string, password: string): Observable<Resobject> {
 	    // headers.append('Access-Control-Allow-Origin','*');
 	    let headers = new Headers({'Content-Type': 'application/json'});  
- 		  headers.append('Authorization','Bearer '+this.api_key);
-      let options = new RequestOptions({headers: headers});
+ 		  let options = new RequestOptions({headers: headers});
       const body = {email: email, password:password};
 
 	    return this.http.post(`${this.base_url}/user/login`,body,options)
@@ -36,7 +44,6 @@ export class KaryawanProvider {
   savetoken(user_id: number, token: string): Observable<Resobject> {
       // headers.append('Access-Control-Allow-Origin','*');
       let headers = new Headers({'Content-Type': 'application/json'});  
-       headers.append('Authorization','Bearer '+this.api_key);
       let options = new RequestOptions({headers: headers});
       const body = {user_id: user_id, token:token};
 
@@ -48,7 +55,6 @@ export class KaryawanProvider {
   removeToken(user_id: number, token: string): Observable<Resobject> {
       // headers.append('Access-Control-Allow-Origin','*');
       let headers = new Headers({'Content-Type': 'application/json'});  
-      headers.append('Authorization','Bearer '+this.api_key);
       let options = new RequestOptions({headers: headers});
       const body = {user_id: user_id, token:token};
 
@@ -60,7 +66,6 @@ export class KaryawanProvider {
   updatetoken(user_id: number, old_token: string,new_token: string): Observable<Resobject> {
       // headers.append('Access-Control-Allow-Origin','*');
       let headers = new Headers({'Content-Type': 'application/json'});  
-       headers.append('Authorization','Bearer '+this.api_key);
       let options = new RequestOptions({headers: headers});
       const body = {user_id: user_id, old_token:old_token,new_token: new_token};
 
@@ -118,6 +123,16 @@ export class KaryawanProvider {
     let options = new RequestOptions({headers: headers});
 
     return this.http.get(`${this.base_url}/get-list-permit/`+p_karyawan_id,options)
+      .map(this.extractData)
+      .catch(this.handleErrorObservable); 
+  }
+
+  listTerlambat(m_lokasi_id:number): Observable<ResArray>{
+    let headers = new Headers({'Content-Type': 'application/json'});  
+     headers.append('Authorization','Bearer '+this.api_key);
+    let options = new RequestOptions({headers: headers});
+
+    return this.http.get(`${this.base_url}/get-list-terlambat/`+m_lokasi_id,options)
       .map(this.extractData)
       .catch(this.handleErrorObservable); 
   }
