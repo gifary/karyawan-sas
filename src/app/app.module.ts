@@ -3,17 +3,14 @@ import { ErrorHandler, NgModule } from '@angular/core';
 import { IonicApp, IonicErrorHandler, IonicModule } from 'ionic-angular';
 import { SplashScreen } from '@ionic-native/splash-screen';
 import { StatusBar } from '@ionic-native/status-bar';
-import { SocketIoModule, SocketIoConfig } from 'ng-socket-io';
 
 import { MyApp } from './app.component';
 import { LoginPageModule } from '../pages/login/login.module';
 import { NavigationPage } from '../pages/navigation/navigation';
 import { HomePage } from '../pages/home/home';
-import { AboutPage } from '../pages/about/about';
 import { LogoutPage } from '../pages/logout/logout';
 import { ListPermitPageModule } from '../pages/list-permit/list-permit.module';
 import { PermitPage } from '../pages/permit/permit';
-import { ChatRoomPage } from '../pages/chat-room/chat-room';
 import { QrcodePage } from '../pages/qrcode/qrcode';
 import { ListPermitProsesPage } from '../pages/list-permit-proses/list-permit-proses';
 import { ListPermitNotifPage} from '../pages/list-permit-notif/list-permit-notif';
@@ -23,6 +20,9 @@ import { ChangeSchedulePage } from '../pages/change-schedule/change-schedule';
 import { ListChangeSchedulePage } from '../pages/list-change-schedule/list-change-schedule';
 import { ShiftModalPage } from '../pages/shift-modal/shift-modal';
 import { ListLateEmployeePage } from '../pages/list-late-employee/list-late-employee';
+import { FormApprovalPage } from '../pages/form-approval/form-approval';
+
+
 import { KaryawanProvider } from '../providers/karyawan/karyawan';
 import { HttpModule } from '@angular/http';
 import { LocalStorageModule } from 'angular-2-local-storage';
@@ -33,7 +33,7 @@ import { Camera } from '@ionic-native/camera';
 import { Push} from '@ionic-native/push';
 import { FCM } from '@ionic-native/fcm';
 import { Keyboard } from '@ionic-native/keyboard';
-const config: SocketIoConfig = { url: 'http://localhost:3001', options: {} };
+import { LoginProvider } from '../providers/login/login';
 
 @NgModule({
   declarations: [
@@ -41,11 +41,9 @@ const config: SocketIoConfig = { url: 'http://localhost:3001', options: {} };
     NavigationPage,
     // LoginPage,
     HomePage,
-    AboutPage,
     LogoutPage,
     // ListPermitPage,
     PermitPage,
-    ChatRoomPage,
     QrcodePage,
     ListPermitProsesPage,
     ListPermitNotifPage,
@@ -54,7 +52,8 @@ const config: SocketIoConfig = { url: 'http://localhost:3001', options: {} };
     ChangeSchedulePage,
     ListChangeSchedulePage,
     ShiftModalPage,
-    ListLateEmployeePage
+    ListLateEmployeePage,
+    FormApprovalPage
   ],
   imports: [
     BrowserModule,
@@ -67,7 +66,6 @@ const config: SocketIoConfig = { url: 'http://localhost:3001', options: {} };
     routing,
     NgxQRCodeModule,
     CalendarModule,
-    SocketIoModule.forRoot(config),
     ListPermitPageModule,
     LoginPageModule
   ],
@@ -77,11 +75,9 @@ const config: SocketIoConfig = { url: 'http://localhost:3001', options: {} };
     // LoginPage,
     NavigationPage,
     HomePage,
-    AboutPage,
     LogoutPage,
     // ListPermitPage,
     PermitPage,
-    ChatRoomPage,
     QrcodePage,
     ListPermitProsesPage,
     ListPermitNotifPage,
@@ -90,7 +86,8 @@ const config: SocketIoConfig = { url: 'http://localhost:3001', options: {} };
     ShiftModalPage,
     ChangeSchedulePage,
     ListChangeSchedulePage,
-    ListLateEmployeePage
+    ListLateEmployeePage,
+    FormApprovalPage
   ],
   providers: [
     StatusBar,
@@ -100,7 +97,8 @@ const config: SocketIoConfig = { url: 'http://localhost:3001', options: {} };
     {provide: ErrorHandler, useClass: IonicErrorHandler},
     KaryawanProvider,
     Camera,
-    Keyboard
+    Keyboard,
+    LoginProvider
   ]
 })
 export class AppModule {}

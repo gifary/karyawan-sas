@@ -6,7 +6,7 @@ import { LoginPage } from '../pages/login/login';
 import { Push, PushObject, PushOptions} from '@ionic-native/push';
 import { FCM } from '@ionic-native/fcm';
 import { LocalStorageService } from 'angular-2-local-storage';
-import { KaryawanProvider } from '../providers/karyawan/karyawan';
+import { LoginProvider } from '../providers/login/login';
 import { ListPermitNotifPage} from '../pages/list-permit-notif/list-permit-notif';
 
 
@@ -23,7 +23,7 @@ export class MyApp {
     public push: Push,
     public fcm: FCM,
     public localstorage: LocalStorageService,
-    public karyawanprovider: KaryawanProvider) {
+    public karyawanprovider: LoginProvider) {
     platform.ready().then(() => {
       statusBar.styleDefault();
       splashScreen.hide();

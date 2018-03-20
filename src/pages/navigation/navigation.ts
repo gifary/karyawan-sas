@@ -8,7 +8,6 @@ import { LogoutPage } from '../logout/logout';
 import { ListPermitPage } from '../list-permit/list-permit';
 import { LocalStorageService } from 'angular-2-local-storage';
 import { config } from '../../config/config';
-import { ChatRoomPage } from '../chat-room/chat-room';
 import { QrcodePage } from '../qrcode/qrcode';
 import { ListPermitProsesPage } from '../list-permit-proses/list-permit-proses';
 import { ListSessionPage } from '../list-session/list-session';

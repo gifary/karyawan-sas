@@ -30,49 +30,7 @@ export class KaryawanProvider implements OnInit {
 
   }
 
-  login(email: string, password: string): Observable<Resobject> {
-	    // headers.append('Access-Control-Allow-Origin','*');
-	    let headers = new Headers({'Content-Type': 'application/json'});  
- 		  let options = new RequestOptions({headers: headers});
-      const body = {email: email, password:password};
-
-	    return this.http.post(`${this.base_url}/user/login`,body,options)
-	    	.map(this.extractData)
-	    	.catch(this.handleErrorObservable); 
-	}
-
-  savetoken(user_id: number, token: string): Observable<Resobject> {
-      // headers.append('Access-Control-Allow-Origin','*');
-      let headers = new Headers({'Content-Type': 'application/json'});  
-      let options = new RequestOptions({headers: headers});
-      const body = {user_id: user_id, token:token};
-
-      return this.http.post(`${this.base_url}/user/savetoken`,body,options)
-        .map(this.extractData)
-        .catch(this.handleErrorObservable); 
-  }
-
-  removeToken(user_id: number, token: string): Observable<Resobject> {
-      // headers.append('Access-Control-Allow-Origin','*');
-      let headers = new Headers({'Content-Type': 'application/json'});  
-      let options = new RequestOptions({headers: headers});
-      const body = {user_id: user_id, token:token};
-
-      return this.http.post(`${this.base_url}/user/removetoken`,body,options)
-        .map(this.extractData)
-        .catch(this.handleErrorObservable); 
-  }
-
-  updatetoken(user_id: number, old_token: string,new_token: string): Observable<Resobject> {
-      // headers.append('Access-Control-Allow-Origin','*');
-      let headers = new Headers({'Content-Type': 'application/json'});  
-      let options = new RequestOptions({headers: headers});
-      const body = {user_id: user_id, old_token:old_token,new_token: new_token};
-
-      return this.http.post(`${this.base_url}/user/updatetoken`,body,options)
-        .map(this.extractData)
-        .catch(this.handleErrorObservable); 
-  }
+  
 
   jenisIzin(tipe:number): Observable<Resobject>{
     let headers = new Headers({'Content-Type': 'application/json'});  

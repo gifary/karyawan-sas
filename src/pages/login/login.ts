@@ -1,7 +1,7 @@
 import { Component, isDevMode } from '@angular/core';
 import { IonicPage,NavController,Platform,ToastController} from 'ionic-angular';
 import { NgForm } from '@angular/forms';
-import { KaryawanProvider } from '../../providers/karyawan/karyawan';
+import { LoginProvider } from '../../providers/login/login';
 import { Resobject } from '../../models/Resobject';
 import { AlertController } from 'ionic-angular';
 import { LocalStorageService } from 'angular-2-local-storage';
@@ -31,7 +31,7 @@ export class LoginPage {
       public toastCtrl: ToastController,
       public platform: Platform,
       public navCtrl: NavController,
-      public karyawanProvider: KaryawanProvider, 
+      public karyawanProvider: LoginProvider, 
       public alertCtrl: AlertController,
       private localStorageService: LocalStorageService,
       public loadingCtrl: LoadingController,
